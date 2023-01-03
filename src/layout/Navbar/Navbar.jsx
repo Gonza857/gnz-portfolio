@@ -50,9 +50,9 @@ function Navbar() {
           <h1 className="px-1">Mi Portfolio</h1>
         </SectionTitleContainer>
 
-        <LeftNav className="d-flex flex-column justify-content-evenly text-center text-white m-0 p-0">
-          <NavUlWrapper className="p-0 m-0">
-            <NavUl className="m-0 p-0">
+        <LeftNav className="d-flex flex-column justify-content-evenly text-center text-white m-0 p-0 bor1">
+          <NavUlWrapper className="p-0 m-0 bor1">
+            <NavUl className="m-0 p-0 bor2">
               <li>
                 <Link
                   onClick={() => setIsOpenMenu(false)}
@@ -246,7 +246,6 @@ const MenuTogglerBtn = styled.div`
 
 const SectionTitleContainer = styled.div`
   width: 80%;
-  /* border: 3px solid red; */
   padding-top: 30px;
   margin: auto;
   h1 {
@@ -268,7 +267,7 @@ const LeftNav = styled.nav`
 `;
 
 const NavUlWrapper = styled.div`
-  width: 100%;
+  width: fit-content;
 `;
 
 const NavUl = styled.div`
@@ -277,7 +276,7 @@ const NavUl = styled.div`
   gap: 15px;
   li {
     width: fit-content;
-    margin-left: 60px;
+    margin-left: 90px;
     a {
       font-family: "Chivo Mono", monospace;
       color: #fff;
