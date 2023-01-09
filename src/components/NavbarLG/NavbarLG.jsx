@@ -86,11 +86,10 @@ function NavbarLG() {
               </a>
             </div>
           </DevRRSS>
-
-          <DevInfo>
-            <p className="p-0 m-0">Developed by Gonzalo Ramos</p>
-          </DevInfo>
         </LeftNav>
+        <DevInfo>
+          <p className="p-0 m-0">Developed by Gonzalo Ramos</p>
+        </DevInfo>
       </Wrapper>
     </SectionNav>
   );
@@ -296,12 +295,11 @@ const DevRRSS = styled.div`
 `;
 
 const DevInfo = styled.div`
+  border: 1px solid red;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
   font-size: 13px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-bottom: 20px;
   font-family: "Chivo Mono", monospace;
   text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6);
 `;

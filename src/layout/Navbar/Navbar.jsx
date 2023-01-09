@@ -10,95 +10,73 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { userContext } from "../../storage/UserContext";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const { isOpenMenu, setIsOpenMenu } = useContext(userContext);
-
-  window.addEventListener("resize", function () {
-    if (this.window.innerWidth >= 992) {
-      setIsOpenMenu(true);
-    } else {
-      setIsOpenMenu(false);
-    }
-  });
-
-  useEffect(() => {
-    console.log(isOpenMenu);
-  }, [isOpenMenu]);
 
   const sectionNavOpen = {
     width: "100%",
     pointerEvents: "unset",
     backgroundColor: "#000000a7",
+    border: "1px solid red",
   };
 
   const wrapperOpen = {
-    display: "flex",
-    opacity: "1",
+    left: "-100%",
+    inset: "0 -100% 0",
+  };
+
+  const iconSize = { fontSize: "1.9rem" };
+
+  const closeSideBar = () => {
+    if (window.screen.width < 992) {
+      setIsOpenMenu(false);
+    }
   };
 
   return (
-    <SectionNav
-      className="d-lg-none col-lg-3 col-xl-2"
-      style={isOpenMenu ? sectionNavOpen : {}}
-    >
-      <Wrapper
-        className={`animate__animated animate__fadeIn`}
-        style={isOpenMenu ? wrapperOpen : {}}
-      >
-        <SectionTitleContainer className="">
-          <h1 className="px-1">Mi Portfolio</h1>
+    <SectionNav className="" style={isOpenMenu ? sectionNavOpen : {}}>
+      <Wrapper style={!isOpenMenu ? wrapperOpen : {}}>
+        {/* --------------- */}
+        <SectionTitleContainer>
+          <h1>Mi Portfolio</h1>
         </SectionTitleContainer>
-
-        <LeftNav className="d-flex flex-column justify-content-evenly text-center text-white m-0 p-0 bor1">
-          <NavUlWrapper className="p-0 m-0 bor1">
-            <NavUl className="m-0 p-0 bor2">
+        <LeftNav className="text-center text-white m-0 p-0">
+          {/* --------------- */}
+          <NavUlWrapper className="p-0 m-0">
+            <NavUl className="m-0 p-0">
               <li>
-                <Link
-                  onClick={() => setIsOpenMenu(false)}
-                  to="/"
-                  className="d-flex align-items-center justify-content-start gap-2"
-                >
-                  <AiOutlineHome style={{ fontSize: "25px" }} />
+                <Link to="/" onClick={() => closeSideBar()}>
+                  <AiOutlineHome style={iconSize} />
                   Inicio
                 </Link>
               </li>
 
               <li>
-                <Link
-                  onClick={() => setIsOpenMenu(false)}
-                  to="/aboutme"
-                  className="d-flex align-items-center justify-content-start gap-2"
-                >
-                  <AiOutlineUser style={{ fontSize: "25px" }} />
+                <Link to="/aboutme" onClick={() => closeSideBar()}>
+                  <AiOutlineUser style={iconSize} />
                   Sobre Mi
                 </Link>
               </li>
 
               <li>
-                <Link
-                  onClick={() => setIsOpenMenu(false)}
-                  to="/projects"
-                  className="d-flex align-items-center justify-content-start gap-2"
-                >
-                  <AiFillDatabase style={{ fontSize: "25px" }} />
+                <Link to="/projects" onClick={() => closeSideBar()}>
+                  <AiFillDatabase style={iconSize} />
                   Proyectos
                 </Link>
               </li>
 
               <li>
-                <Link
-                  onClick={() => setIsOpenMenu(false)}
-                  to="/contact"
-                  className="d-flex align-items-center justify-content-start gap-2"
-                >
-                  <AiOutlineUser style={{ fontSize: "25px" }} />
+                <Link to="/contact" onClick={() => closeSideBar()}>
+                  <AiOutlineUser style={iconSize} />
                   Contacto
                 </Link>
               </li>
             </NavUl>
           </NavUlWrapper>
 
+          {/* --------------- */}
           <DownloadCvContainer>
             <a href="./assets/pdf/cv_gonzaloRamos.pdf" download>
               Descargar CV
@@ -106,6 +84,7 @@ function Navbar() {
             </a>
           </DownloadCvContainer>
 
+          {/* --------------- */}
           <DevRRSS>
             <div>
               <a href="https://github.com/Gonza857" target="_BLANK">
@@ -119,11 +98,11 @@ function Navbar() {
               </a>
             </div>
           </DevRRSS>
-
-          <DevInfo>
-            <p className="p-0 m-0">Developed by Gonzalo Ramos</p>
-          </DevInfo>
         </LeftNav>
+        {/* --------------- */}
+        <DevInfo>
+          <p className="p-0 m-0">Developed by Gonzalo Ramos</p>
+        </DevInfo>
       </Wrapper>
 
       <MenuTogglerBtn
@@ -163,20 +142,35 @@ const SectionNav = styled.section`
   z-index: 1000;
   height: 100vh;
   pointer-events: auto;
+  /* justify-content: space-between; */
 
   @media screen and (min-width: 992px) {
+    width: 20%;
     position: relative;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 17.5%;
   }
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
-  display: none;
-  flex-direction: column;
   background-image: url(./assets/images/navbar_bg.svg);
   background-size: cover;
+  height: 100%;
   position: relative;
-  transition: all 10s;
+  border-right: 2px dashed #00a19b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+
+  @media screen and (min-width: 600px) {
+    width: 30%;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 100%;
+  }
 `;
 
 const MenuTogglerBtn = styled.div`
@@ -188,6 +182,9 @@ const MenuTogglerBtn = styled.div`
   cursor: pointer;
   display: inline-block;
   transition: all 0.3s;
+  @media screen and (max-width: 600px) {
+    margin: 20px;
+  }
   span {
     background-color: #fff;
     position: absolute;
@@ -246,7 +243,6 @@ const MenuTogglerBtn = styled.div`
 
 const SectionTitleContainer = styled.div`
   width: 80%;
-  padding-top: 30px;
   margin: auto;
   h1 {
     font-family: "Chivo Mono", monospace;
@@ -255,34 +251,47 @@ const SectionTitleContainer = styled.div`
       1px 2px 4px rgba(37, 150, 190, 0.6);
     text-align: center;
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin: 0;
+    padding-top: 40px;
+    @media screen and (min-width: 992px) {
+      font-size: 2rem;
+    }
   }
 `;
 
 const LeftNav = styled.nav`
   width: 100%;
   height: 100%;
-  border-right: 0.5px dashed #00a19b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 const NavUlWrapper = styled.div`
-  width: fit-content;
+  width: 100%;
+  display: grid;
+  justify-content: center;
 `;
 
 const NavUl = styled.div`
+  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 15px;
   li {
     width: fit-content;
-    margin-left: 90px;
     a {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 10px;
       font-family: "Chivo Mono", monospace;
       color: #fff;
       text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6);
       text-decoration: none;
       transition: all 0.3s;
+      font-size: 1.1rem;
       &:hover {
         text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
           1px 2px 4px rgba(37, 150, 190, 0.6),
@@ -342,12 +351,10 @@ const DevRRSS = styled.div`
 `;
 
 const DevInfo = styled.div`
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
   font-size: 13px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-bottom: 20px;
   font-family: "Chivo Mono", monospace;
   text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6);
 `;

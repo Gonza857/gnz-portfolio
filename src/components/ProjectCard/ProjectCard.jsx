@@ -27,7 +27,7 @@ function ProjectCard({ data, id }) {
 export default ProjectCard;
 
 const ProjectCardContainer = styled.div`
-  width: fit-content;
+  min-width: 300px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -36,18 +36,31 @@ const ProjectCardContainer = styled.div`
   border: 1px solid #00a19b;
   border-radius: 20px;
   padding: 0 15px;
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    gap: 10px;
+  }
 `;
 
 const ImgContainer = styled.div`
+  border: 1px solid #00a19b;
   img {
     width: 50px;
     height: 50px;
     object-fit: contain;
+    @media screen and (max-width: 400px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 `;
 
 const ProjectInfo = styled.div`
+  border: 1px solid #00a19b;
   p {
+    @media screen and (max-width: 400px) {
+      font-size: 15px;
+    }
     a {
       margin-left: 8px;
     }
@@ -55,7 +68,9 @@ const ProjectInfo = styled.div`
 `;
 
 const ProjectTitle = styled.p`
-  font-size: 18px;
   margin: 0;
   font-weight: 600;
+  @media screen and (min-width: 400px) {
+    font-size: 18px;
+  }
 `;

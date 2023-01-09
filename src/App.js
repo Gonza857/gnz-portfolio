@@ -11,7 +11,7 @@ function App() {
     <UserContext>
       <div className="d-flex" style={{ position: "relative" }}>
         <BrowserRouter>
-          <NavbarLG />
+          {/* <NavbarLG /> */}
           <Navbar />
           <Rutas />
         </BrowserRouter>

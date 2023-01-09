@@ -1,34 +1,56 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { AiFillLinkedin, AiFillGithub, AiOutlineHome } from "react-icons/ai";
-import { Link } from "react-router-dom";
-// import "animate.css";
 import { userContext } from "../../storage/UserContext";
+import { motion } from "framer-motion";
 
 function Home() {
   const { isOpenMenu, setIsOpenMenu } = useContext(userContext);
 
-  window.addEventListener("resize", function () {
-    if (this.window.innerWidth >= 992) setIsOpenMenu(true);
-  });
+  useEffect(() => {
+    console.log(isOpenMenu);
+  }, [isOpenMenu]);
+
+  useEffect(() => {
+    if (window.screen.width >= 992) {
+      setIsOpenMenu(true);
+    } else {
+      setIsOpenMenu(false);
+    }
+  }, []);
 
   return (
-    <MainSection className="col-md-12 col-lg-9 col-xl-10 ">
+    <MainSection className="col-md-12">
       <Wrapper className="col-10 col-xl-10 text-white ">
         <DevMainText className="">
           <p className="m-0">Hola! Mi nombre es Gonzalo.</p>
           <p className="m-0">Soy desarrollador Frontend.</p>
         </DevMainText>
         <DevDesciptionText>
-          <p className="animate__animated animate__fadeInRight">
+          <motion.p
+            initial={{ x: 500, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             ¡Bienvenido a mi sitio web! Me llamo Gonzalo, soy de Argentina. Me
             destaco como desarrollador Frontend React. Aquí encontraras mis
             proyectos a lo largo de mi trayectoria, información acerca de las
             tecnologías que utilizo e informacíon acerca de mis habilidades.
-          </p>
+          </motion.p>
           <div className="d-flex justify-content-start gap-3 animate__animated animate__fadeInUp">
-            <button>Ver proyectos</button>
-            <button>Sobre Mí</button>
+            <motion.button
+              initial={{ y: 500, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              Ver proyectos
+            </motion.button>
+            <motion.button
+              initial={{ y: 500, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              Sobre Mí
+            </motion.button>
           </div>
         </DevDesciptionText>
       </Wrapper>
@@ -74,10 +96,12 @@ const MainSection = styled.div`
   display: grid;
   transition: all 0.5s;
   overflow: hidden;
+
+  @media screen and (min-width: 992px) {
+    width: 75%;
+  }
   @media screen and (min-width: 1200px) {
-    * {
-      /* border: 0 !important; */
-    }
+    width: 82.5%;
   }
 `;
 
@@ -99,8 +123,9 @@ const DevMainText = styled.div`
     text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
       1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6),
       1px 2px 4px rgba(37, 150, 190, 0.6);
-    @media screen and (min-width: 300px) {
-      font-size: 1rem;
+    font-size: 1rem;
+    @media screen and (min-width: 350px) {
+      font-size: 1.2rem;
     }
     @media screen and (min-width: 400px) {
       font-size: 1.3rem;
@@ -150,16 +175,10 @@ const DevDesciptionText = styled.div`
     font-family: "Chivo Mono", monospace;
     text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
       1px 2px 4px rgba(37, 150, 190, 0.6);
-    font-size: 0.6rem;
+    font-size: 0.9rem;
     @media screen and (min-width: 400px) {
-      font-size: 0.7rem;
+      font-size: 1rem;
       margin: 0;
-    }
-    @media screen and (min-width: 500px) {
-      font-size: 1rem;
-    }
-    @media screen and (min-width: 600px) {
-      font-size: 1rem;
     }
     @media screen and (min-width: 768px) {
       font-size: 1.2rem;
@@ -173,10 +192,8 @@ const DevDesciptionText = styled.div`
   }
   button {
     display: inline-block;
-    padding: 8px 25px;
     border: 1px solid #4f4f4f;
     border-radius: 15px;
-    transition: all 0.2s ease-in;
     position: relative;
     overflow: hidden;
     color: white;
@@ -185,16 +202,15 @@ const DevDesciptionText = styled.div`
     box-shadow: 2px 2px 5px rgba(37, 150, 190, 0.6),
       -2px -2px 5px rgba(37, 150, 190, 0.6);
     @media screen and (min-width: 300px) {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
+      padding: 8px 15px;
     }
     @media screen and (min-width: 600px) {
       font-size: 1rem;
-    }
-    @media screen and (min-width: 992px) {
-      font-size: 1.25rem;
+      padding: 8px 25px;
     }
     @media screen and (min-width: 1200px) {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
     &::before {
       content: "";

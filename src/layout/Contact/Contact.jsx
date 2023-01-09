@@ -4,9 +4,9 @@ import { AiOutlineSend } from "react-icons/ai";
 
 function Contact() {
   return (
-    <ContactContainer className="col-10">
-      <Wrapper className="col-10 m-auto d-grid align-content-center">
-        <FormContainer className="col-4 m-auto text-white d-flex flex-column gap-3 animate__animated animate__bounceIn">
+    <ContactContainer className="col-12 col-lg-10">
+      <Wrapper className="col-12 col-lg-10 m-auto d-grid align-content-center">
+        <FormContainer className="col-10 col-sm-8 col-md-6 m-auto text-white d-flex flex-column gap-3">
           <FormTitle>Contacto</FormTitle>
           <ContactForm className="d-flex flex-column gap-3">
             <div className="d-flex flex-column formGroup">
@@ -54,6 +54,12 @@ const ContactContainer = styled.div`
   min-height: 100vh;
   background-image: url(./assets/images/contact_bg.svg);
   background-size: cover;
+  @media screen and (min-width: 992px) {
+    width: 75%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 82.5%;
+  }
 `;
 
 const Wrapper = styled.div`
