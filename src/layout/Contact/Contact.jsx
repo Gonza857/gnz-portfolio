@@ -1,20 +1,122 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { AiOutlineSend } from "react-icons/ai";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Ring } from "@uiball/loaders";
+
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Contact() {
+  const captcha = useRef(null);
+  const form = useRef();
+
+  const [isSending, setIsSending] = useState(false);
+  const [validCaptcha, setValidCaptcha] = useState(false);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const notifySuccess = () => {
+    toast.success("Correo electrónico enviado correctamente!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
+  const notifyError = (errorText) => {
+    toast.error(
+      `Oops! Ocurrio un error. Inténtalo de nuevo más tarde. ${errorText}`,
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      }
+    );
+  };
+
+  const notifyWarning = () => {
+    toast.info("Debes completar el Captcha", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
+  const onChange = () => {
+    if (captcha.current.getValue()) {
+      setValidCaptcha(true);
+    } else {
+      setValidCaptcha(false);
+    }
+  };
+  const onSubmit = () => {
+    setIsSending(true);
+    if (captcha.current.getValue()) {
+      console.log("envio con captcha valido");
+      emailjs
+        .sendForm(
+          "service_f6kumxu",
+          "template_fkqb4th",
+          form.current,
+          "hngfXkj4dqbpXlBAg"
+        )
+        .then(
+          (result) => {
+            notifySuccess();
+            reset();
+            setIsSending(false);
+          },
+          (error) => {
+            notifyError(error.text);
+          }
+        );
+    } else {
+      notifyWarning();
+      setIsSending(false);
+    }
+  };
+
   return (
     <ContactContainer className="col-12 col-lg-10">
-      <Wrapper className="col-12 col-lg-10 m-auto d-grid align-content-center">
-        <FormContainer className="col-10 col-sm-8 col-md-6 m-auto text-white d-flex flex-column gap-3">
+      <ToastContainer />
+      <Wrapper className="col-12 col-lg-10">
+        <FormContainer className="col-10 col-sm-8 col-md-6 gap-3">
           <FormTitle>Contacto</FormTitle>
-          <ContactForm className="d-flex flex-column gap-3">
+          <ContactForm
+            ref={form}
+            className="gap-3"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="d-flex flex-column formGroup">
               <input
                 name="email"
                 type="email"
                 placeholder="Ingresa tu e-mail"
                 className="formField"
+                {...register("email")}
                 required
               />
               <label htmlFor="email" className="formLabel">
@@ -28,19 +130,46 @@ function Contact() {
                 name="mensaje"
                 placeholder="Ingresa tu mensaje"
                 style={{ resize: "none" }}
+                {...register("mensaje", {
+                  required: "Escribe tu mensaje",
+                })}
               />
               <label htmlFor="mensaje" className="formLabel">
                 Mensaje
               </label>
+              {errors.mensaje && (
+                <small className="text-danger col-12">
+                  {errors.mensaje.message}
+                </small>
+              )}
             </div>
 
-            <button
-              type="submit"
-              className="d-flex gap-1 justify-content-center align-items-center"
-            >
-              <p className="m-0">Enviar</p>
-              <AiOutlineSend />
-            </button>
+            <CaptchaContainer>
+              <ReCAPTCHA
+                ref={captcha}
+                sitekey="6LfOnO0jAAAAAMX0QVYKuEqk67OfYstCILmhDbKv"
+                onChange={onChange}
+                theme={"dark"}
+                size={window.screen.width < 992 ? "compact" : "normal"}
+                style={{
+                  margin: `${window.screen.width < 992 ? "unset" : "auto"}`,
+                }}
+              />
+            </CaptchaContainer>
+
+            {!isSending ? (
+              <button>
+                Enviar
+                <AiOutlineSend />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="d-flex gap-1 justify-content-center align-items-center"
+              >
+                <Ring size={40} lineWeight={5} speed={2} color="#00A19B" />
+              </button>
+            )}
           </ContactForm>
         </FormContainer>
       </Wrapper>
@@ -50,12 +179,18 @@ function Contact() {
 
 export default Contact;
 
+const CaptchaContainer = styled.div`
+  width: fit-content;
+  margin: auto;
+`;
+
 const ContactContainer = styled.div`
   min-height: 100vh;
-  background-image: url(./assets/images/contact_bg.svg);
-  background-size: cover;
+  background-image: url(./assets/images/contact_bg_mob.svg);
   @media screen and (min-width: 992px) {
-    width: 75%;
+    background-image: url(./assets/images/contact_bg.svg);
+    background-size: cover;
+    width: 80%;
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
@@ -64,9 +199,24 @@ const ContactContainer = styled.div`
 
 const Wrapper = styled.div`
   height: 100%;
+  padding-top: 20px;
+  margin: auto;
+  display: grid;
+  align-content: flex-start;
+  padding-top: 50px;
+  @media screen and (min-width: 600px) {
+    padding: unset;
+    align-content: unset;
+  }
 `;
 
-const FormContainer = styled.div``;
+const FormContainer = styled.div`
+  height: fit-content;
+  margin: auto;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+`;
 
 const FormTitle = styled.h3`
   text-align: center;
@@ -79,6 +229,8 @@ const FormTitle = styled.h3`
 `;
 
 const ContactForm = styled.form`
+  display: flex;
+  flex-direction: column;
   font-family: "Chivo Mono", monospace;
   position: relative;
   background-color: #00a19c36;
@@ -103,11 +255,15 @@ const ContactForm = styled.form`
       border: 0;
       border-bottom: 2px solid #00fff7;
       outline: 0;
-      font-size: 1.3rem;
+      font-size: 1rem;
       color: #fff;
       padding: 7px 0;
       background: transparent;
       transition: border-color 0.2s;
+
+      @media screen and (min-width: 600px) {
+        font-size: 1.3rem;
+      }
 
       &:required,
       &:invalid {
@@ -199,6 +355,9 @@ const ContactForm = styled.form`
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: 200px;
+  height: 150px;
   padding: 5px;
+  @media screen and (min-width: 600px) {
+    height: 200px;
+  }
 `;

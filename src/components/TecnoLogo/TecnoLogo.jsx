@@ -10,7 +10,7 @@ function TecnoLogo({ data }) {
       transition={{ duration: 0.5 }}
       src={data.localImg}
       alt={data.altImg}
-      style={{ borderRadius: `${data.roundedImg ? "50%" : "0"}` }}
+      style={data.style}
     />
   );
 }
@@ -22,9 +22,6 @@ const LogoImage = styled(motion.img)`
   height: 65px;
   padding: 5px;
   object-fit: contain;
-  &:nth-child(8) {
-    border-radius: 50%;
-  }
   @media screen and (min-width: 768px) {
     width: 68px;
     height: 68px;

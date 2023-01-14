@@ -1,65 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import { projectsInfo } from "../../projectsData/projectsData";
 
 function Projects() {
-  const projectsInfo = [
-    {
-      titulo: "Proyecto Coderhouse",
-      descripcion: "Proyecto final del curso de desarrollo web.",
-      imgLocalRoute: "./assets/images/desarrolloweb_logo.png",
-      imgBorderCircle: false,
-    },
-    {
-      titulo: "Proyecto Coderhouse",
-      descripcion: "Proyecto final del curso de Javascript.",
-      imgLocalRoute: "./assets/images/javascript_logo.png",
-      imgBorderCircle: false,
-    },
-    {
-      titulo: "Proyecto Coderhouse",
-      descripcion: "Proyecto final del curso de React JS.",
-      imgLocalRoute: "./assets/images/react_logo.svg",
-      imgBorderCircle: true,
-    },
-    {
-      titulo: "Proyecto Red Solana",
-      descripcion: "Proyecto C.R.U.D para un casino.",
-      imgLocalRoute: "./assets/images/redsolana_logo.png",
-      imgBorderCircle: true,
-    },
-    {
-      titulo: "Proyecto Red Solana",
-      descripcion: "Proyecto C.R.U.D para un casino.",
-      imgLocalRoute: "./assets/images/redsolana_logo.png",
-      imgBorderCircle: true,
-    },
-    {
-      titulo: "Proyecto Red Solana",
-      descripcion: "Proyecto C.R.U.D para un casino.",
-      imgLocalRoute: "./assets/images/redsolana_logo.png",
-      imgBorderCircle: true,
-    },
-    {
-      titulo: "Proyecto Red Solana",
-      descripcion: "Proyecto C.R.U.D para un casino.",
-      imgLocalRoute: "./assets/images/redsolana_logo.png",
-      imgBorderCircle: true,
-    },
-    {
-      titulo: "Proyecto Red Solana",
-      descripcion: "Proyecto C.R.U.D para un casino.",
-      imgLocalRoute: "./assets/images/redsolana_logo.png",
-      imgBorderCircle: true,
-    },
-    {
-      titulo: "Proyecto Red Solana",
-      descripcion: "Proyecto C.R.U.D para un casino.",
-      imgLocalRoute: "./assets/images/redsolana_logo.png",
-      imgBorderCircle: true,
-    },
-  ];
-
   return (
     <ProjectsSection className="col-md-12 col-lg-9 col-xl-10 bor3 d-flex flex-column">
       <SectionTitle>Mis proyectos</SectionTitle>
@@ -86,7 +30,7 @@ const ProjectsSection = styled.div`
   overflow: hidden;
   @media screen and (max-width: 992px) {
     background-size: cover;
-    background-image: url(./assets/images/projects_bg_mobile.svg);
+    background-image: url(./assets/images/projects_bg_mobile.svg) !important;
   }
   @media screen and (min-width: 992px) {
     width: 75%;

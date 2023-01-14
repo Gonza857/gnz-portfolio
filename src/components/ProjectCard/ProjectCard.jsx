@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function ProjectCard({ data, id }) {
-  console.log(data.imgBorderCircle);
+  console.log(data.entrada);
+  const { entrada } = data;
   return (
     <ProjectCardContainer className="col-3">
       <ImgContainer>

@@ -4,6 +4,7 @@ import EducationCard from "../../components/EducationCard/EducationCard";
 import TecnoLogo from "../../components/TecnoLogo/TecnoLogo";
 import { userContext } from "../../storage/UserContext";
 import { motion } from "framer-motion";
+import { technologiesImages } from "../../projectsData/projectsData";
 
 function Aboutme() {
   const { isOpenMenu, setIsOpenMenu } = useContext(userContext);
@@ -73,37 +74,6 @@ function Aboutme() {
     },
   ];
 
-  const technologyImages = [
-    {
-      localImg: "./assets/images/vsc_logo.png",
-      altImg: "Visual Studio Code Logo",
-    },
-    { localImg: "./assets/images/html_logo.png", altImg: "HTML Logo" },
-    { localImg: "./assets/images/css_logo.png", altImg: "CSS Logo" },
-    {
-      localImg: "./assets/images/javascript_logo.png",
-      altImg: "Javascript Logo",
-    },
-    { localImg: "./assets/images/react_logo.png", altImg: "React JS Logo" },
-    {
-      localImg: "./assets/images/styledcomp_logo.png",
-      altImg: "Styled Components Logo",
-    },
-    { localImg: "/assets/images/git_logo.png", altImg: "Git Logo" },
-    { localImg: "./assets/images/github_logo.png", altImg: "GitHub Logo" },
-    { localImg: "./assets/images/sass_logo.png", altImg: "SASS Logo" },
-    { localImg: "./assets/images/netlify_logo.png", altImg: "Netlify Logo" },
-    {
-      localImg: "./assets/images/hostinger_logo.webp",
-      altImg: "Hostinger Logo",
-    },
-    {
-      localImg: "./assets/images/bootstrap_logo.png",
-      altImg: "Bootstrap Logo",
-    },
-    { localImg: "./assets/images/firebase_logo.svg", altImg: "Firebase Logo" },
-  ];
-
   return (
     <AboutmeSection className="col-12 col-lg-10">
       <Wrapper>
@@ -127,7 +97,7 @@ function Aboutme() {
           <DevTechnologies className="col-12 col-md-6 d-flex flex-column">
             <SectionTitle>Tecnologías utilizadas</SectionTitle>
             <TechnologiesContainer className="d-flex">
-              {technologyImages.map((item, i) => (
+              {technologiesImages.map((item, i) => (
                 <TecnoLogo key={i} data={item} />
               ))}
             </TechnologiesContainer>
@@ -155,10 +125,11 @@ const AboutmeSection = styled.div`
   color: #fff;
   width: 100%;
   min-height: 100vh;
-  background: url(./assets/images/aboutme_bg.svg);
+  background-image: url(./assets/images/aboutme_bg_mob.svg);
   background-size: cover;
   @media screen and (min-width: 992px) {
     width: 80%;
+    background: url(./assets/images/aboutme_bg.svg);
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
