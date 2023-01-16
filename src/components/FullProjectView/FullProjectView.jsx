@@ -39,66 +39,84 @@ export const FullProjectView = () => {
 
   return (
     <ProjectViewContainer className="col-md-12 col-lg-9 col-xl-10 pt-5">
-      <Wrapper className="mt-4 gap-3 gap-lg-0">
+      <Wrapper className="mt-4 gap-3 gap-lg-0 bor1">
         {/*  */}
 
-        <ProjectInfo className="col-12 col-lg-5 d-flex flex-column gap-3 px-4">
+        <ProjectInfo className=" d-flex flex-column col-12 gap-3 px-2 px-sm-3 px-lg-4 col-xl-5 gap-lg-1 bor1">
           <Title>{thisProjectInfo.title}</Title>
-          <div>
-            <Subtitles className="d-flex flex-column text-start flex-lg-row gap-lg-3">
-              Descripcion:
-              <Descriptions className="text-start">
-                {thisProjectInfo.descripcion}
-              </Descriptions>
-            </Subtitles>
-          </div>
-          <div className="d-flex flex-column justify-content-start text-start flex-lg-row gap-lg-2">
-            <Subtitles>Fecha de realización:</Subtitles>
-            <Descriptions className="text-start">
-              {thisProjectInfo.finishedDate}
-            </Descriptions>
-          </div>
-          <Subtitles className="text-start">Tecnologias utilizadas:</Subtitles>
-          <TechnologiesImgContainer className="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
-            {imagesUsed.map((tecno, i) => {
-              return (
-                <img
-                  src={tecno.localImg}
-                  alt={tecno.altImg}
-                  key={i}
-                  style={tecno.style}
-                />
-              );
-            })}
-          </TechnologiesImgContainer>
-          {thisProjectInfo.otherTechnologies === "" ? (
-            ""
-          ) : (
-            <>
-              <Subtitles className="text-start">
-                Otras tecnologias utilizadas:
+
+          <div className="bor1 d-flex flex-wrap">
+            {""}
+
+            <div className="bor2 col-md-8 mb-md-3 order-lg-0 col-lg-6 col-xl-12">
+              <Subtitles className="d-flex flex-column text-start flex-md-row gap-lg-3 flex-lg-column gap-xl-1">
+                Descripcion:
+                <Descriptions className="text-start px-md-2">
+                  {thisProjectInfo.descripcion}
+                </Descriptions>
               </Subtitles>
+            </div>
+
+            {""}
+
+            <div className="d-flex flex-column justify-content-start text-start col-md-4 gap-md-2 col-lg-6 order-lg-3 mt-lg-3 flex-xl-row">
+              <Subtitles>Fecha de realización:</Subtitles>
               <Descriptions className="text-start">
-                {thisProjectInfo.otherTechnologies}
+                {thisProjectInfo.finishedDate}
               </Descriptions>
-            </>
-          )}
+            </div>
+
+            {""}
+
+            <div className="col-12 col-lg-6 mt-md-2 mb-md-4 order-lg-1 col-xl-12 bor1">
+              <Subtitles className="text-start">
+                Tecnologias utilizadas:
+              </Subtitles>
+              <TechnologiesImgContainer className="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start mt-md-2">
+                {imagesUsed.map((tecno, i) => {
+                  return (
+                    <img
+                      src={tecno.localImg}
+                      alt={tecno.altImg}
+                      key={i}
+                      style={tecno.style}
+                    />
+                  );
+                })}
+              </TechnologiesImgContainer>
+            </div>
+
+            <div className="bor2 col-12 order-lg-2">
+              {thisProjectInfo.otherTechnologies === "" ? (
+                ""
+              ) : (
+                <>
+                  <Subtitles className="text-start">
+                    Otras tecnologias utilizadas:
+                  </Subtitles>
+                  <Descriptions className="text-start">
+                    {thisProjectInfo.otherTechnologies}
+                  </Descriptions>
+                </>
+              )}
+            </div>
+          </div>
           <LinkButton href={thisProjectInfo.btnLinkSite}>
             Visitar Sitio
           </LinkButton>
         </ProjectInfo>
 
-        <div className="col-12 col-lg-7 d-flex flex-wrap justify-content-center gap-3 bor2 px-3 p-lg-0">
-          <ProjectImgContainer className="col-lg-8">
+        <div className="col-12 col-xl-7 d-flex flex-wrap justify-content-center gap-3 px-2 px-md-0 p-lg-0 bor1 my-md-3">
+          <ProjectImgContainer className="col-12 col-sm-8 col-md-5 col-xl-8">
             <img src={thisProjectInfo.img1} alt="" />
           </ProjectImgContainer>
-          <ProjectImgContainer className="col-lg-5">
+          <ProjectImgContainer className="col-12 col-sm-6 col-md-6 col-xl-5">
             <img src={thisProjectInfo.img2} alt="" />
           </ProjectImgContainer>
-          <ProjectImgContainer className="col-lg-5">
+          <ProjectImgContainer className="col-12 col-sm-5 col-md-6 col-xl-5">
             <img src={thisProjectInfo.img3} alt="" />
           </ProjectImgContainer>
-          <ProjectImgContainer className="col-lg-6">
+          <ProjectImgContainer className="col-12 col-sm-8 col-md-5 col-xl-6">
             <img src={thisProjectInfo.img4} alt="" />
           </ProjectImgContainer>
         </div>
@@ -117,7 +135,7 @@ const RevealAnim = keyframes`
 `;
 
 const ProjectViewContainer = styled.div`
-  background-image: url(../assets/images/home_bg.svg);
+  background-image: url(../assets/images/singleProyect_bg_mob.svg);
   background-size: cover;
   min-height: 100vh;
   transition: all 0.5s;
@@ -139,7 +157,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   text-align: center;
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1199px) {
     flex-direction: column;
   }
 `;
@@ -149,6 +167,9 @@ const ProjectInfo = styled.div`
 `;
 
 const ProjectImgContainer = styled.div`
+  border: 3px solid yellow;
+  display: flex;
+  align-items: center;
   img {
     width: 100%;
     object-fit: contain;
@@ -195,16 +216,25 @@ const Title = styled.p`
 const Subtitles = styled.p`
   color: #fff;
   font-family: "Chivo Mono", monospace;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
     1px 2px 4px rgba(37, 150, 190, 0.6);
   margin: 0;
+  @media screen and (min-width: 600px) {
+    font-size: 1.15rem;
+  }
+  @media screen and (min-width: 992px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Descriptions = styled.p`
   font-family: "Chivo Mono", monospace;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin: 0;
   text-shadow: none;
+  @media screen and (min-width: 600px) {
+    font-size: 1rem;
+  }
 `;

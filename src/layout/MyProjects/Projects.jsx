@@ -30,7 +30,7 @@ const ProjectsSection = styled.div`
   overflow: hidden;
   @media screen and (max-width: 992px) {
     background-size: cover;
-    background-image: url(./assets/images/projects_bg_mobile.svg) !important;
+    background-image: url(./assets/images/projects_bg_mobile.svg);
   }
   @media screen and (min-width: 992px) {
     width: 75%;
