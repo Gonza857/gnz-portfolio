@@ -6,10 +6,12 @@ export const projectsInfo = [
     imgLocalRoute: "../assets/images/desarrolloweb_logo.png",
     imgBorderCircle: false,
     thisProjectInfo: {
-      img1: "../assets/images/project1-dw-course/img1.png",
-      img2: "../assets/images/project1-dw-course/img2.png",
-      img3: "../assets/images/project1-dw-course/img3.png",
-      img4: "../assets/images/project1-dw-course/img4.png",
+      images: [
+        "../assets/images/project1-dw-course/img1.png",
+        "../assets/images/project1-dw-course/img2.png",
+        "../assets/images/project1-dw-course/img3.png",
+        "../assets/images/project1-dw-course/img4.png",
+      ],
       title: "Proyecto Final - Desarrollo Web",
       client: "",
       technologies: [
@@ -36,10 +38,12 @@ export const projectsInfo = [
     imgLocalRoute: "../assets/images/javascript_logo.png",
     imgBorderCircle: false,
     thisProjectInfo: {
-      img1: "../assets/images/project2-js-course/img1.png",
-      img2: "../assets/images/project2-js-course/img2.png",
-      img3: "../assets/images/project2-js-course/img3.png",
-      img4: "../assets/images/project2-js-course/img4.png",
+      images: [
+        "../assets/images/project2-js-course/img1.png",
+        "../assets/images/project2-js-course/img2.png",
+        "../assets/images/project2-js-course/img3.png",
+        "../assets/images/project2-js-course/img4.png",
+      ],
       title: "Proyecto Final - Javascript",
       client: "",
       technologies: [
@@ -66,10 +70,12 @@ export const projectsInfo = [
     imgLocalRoute: "../assets/images/react_logo.svg",
     imgBorderCircle: true,
     thisProjectInfo: {
-      img1: "../assets/images/project3-react-course/img1.png",
-      img2: "../assets/images/project3-react-course/img2.png",
-      img3: "../assets/images/project3-react-course/img3.png",
-      img4: "../assets/images/project3-react-course/img4.png",
+      images: [
+        "../assets/images/project3-react-course/img1.png",
+        "../assets/images/project3-react-course/img2.png",
+        "../assets/images/project3-react-course/img3.png",
+        "../assets/images/project3-react-course/img4.png",
+      ],
       title: "Proyecto Final - React JS",
       client: "",
       technologies: [
@@ -99,10 +105,12 @@ export const projectsInfo = [
     imgLocalRoute: "../assets/images/redsolana_logo.png",
     imgBorderCircle: true,
     thisProjectInfo: {
-      img1: "../assets/images/project4-redsolana/img1.png",
-      img2: "../assets/images/project4-redsolana/img2.png",
-      img3: "../assets/images/project4-redsolana/img3.png",
-      img4: "../assets/images/project4-redsolana/img4.png",
+      images: [
+        "../assets/images/project4-redsolana/img1.png",
+        "../assets/images/project4-redsolana/img2.png",
+        "../assets/images/project4-redsolana/img3.png",
+        "../assets/images/project4-redsolana/img4.png",
+      ],
       title: "Proyecto Red Solana",
       technologies: [
         "html",
@@ -116,7 +124,8 @@ export const projectsInfo = [
         "styledComponents",
         "bootstrap",
       ],
-      otherTechnologies: "Animated CSS - React Hook Form - Toastify - uuID - React Icons",
+      otherTechnologies:
+        "Animated CSS - React Hook Form - Toastify - uuID - React Icons",
       client: "",
       descripcion:
         "Proyecto realizado para una red de casinos, cuyo fin es administrar los cajeros de los mismos. Se basa en un funcionamiento C.R.U.D, pudiendo agregar información de cada cajero, como su nombre o imagen así como tambien editarlo o eliminarlo.",
@@ -200,4 +209,11 @@ export const technologiesImages = [
     altImg: "SweetAlert2 Logo",
     style: { borderRadius: "20%" },
   },
+];
+
+export const columnsImagesProject = [
+  "col-12 col-sm-6 col-lg-6 col-xl-9",
+  "col-12 col-sm-5 col-lg-5 col-xl-5",
+  "col-12 col-sm-5 col-lg-5 col-xl-6",
+  "col-12 col-sm-6 col-lg-6 col-xl-8",
 ];

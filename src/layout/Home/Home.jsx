@@ -2,9 +2,11 @@ import React, { useContext, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { userContext } from "../../storage/UserContext";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const { isOpenMenu, setIsOpenMenu } = useContext(userContext);
+  const goTo = useNavigate();
 
   useEffect(() => {
     console.log(isOpenMenu);
@@ -38,6 +40,7 @@ function Home() {
           </motion.p>
           <div className="d-flex justify-content-start gap-3 animate__animated animate__fadeInUp">
             <motion.button
+              onClick={() => goTo("/projects")}
               initial={{ y: 500, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -45,6 +48,7 @@ function Home() {
               Ver proyectos
             </motion.button>
             <motion.button
+              onClick={() => goTo("/aboutme")}
               initial={{ y: 500, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -98,10 +102,12 @@ const MainSection = styled.div`
   overflow: hidden;
 
   @media screen and (min-width: 992px) {
-    width: 75%;
+    width: 80%;
+    margin-left: 20%;
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
+    margin-left: 17.5%;
   }
 `;
 

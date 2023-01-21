@@ -3,23 +3,20 @@ import { useParams } from "react-router-dom";
 import {
   projectsInfo,
   technologiesImages,
+  columnsImagesProject,
 } from "../../projectsData/projectsData";
 import styled, { keyframes } from "styled-components";
 import LinkButton from "../Button/LinkButton";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { ModalProjectImg } from "../ModalProjectImg/ModalProjectImg";
 
 export const FullProjectView = () => {
   const [imagesUsed, setImagesUsed] = useState([]);
   let params = useParams();
   let paramsId = params.id;
-  console.log(paramsId);
-
   let searchProject = projectsInfo.find((project) => project.id == paramsId);
-  console.log(searchProject);
-
   const { thisProjectInfo } = searchProject;
-  console.log(thisProjectInfo.technologies);
-  console.log("encontraste");
-  console.log(technologiesImages);
 
   function filtrarTecnos() {
     let usedTecnos = [];
@@ -38,20 +35,20 @@ export const FullProjectView = () => {
   }, []);
 
   return (
-    <ProjectViewContainer className="col-md-12 col-lg-9 col-xl-10 pt-5">
-      <Wrapper className="mt-4 gap-3 gap-lg-0 bor1">
+    <ProjectViewContainer className="col-md-12 col-lg-9 col-xl-10 pt-5 pt-xl-0">
+      <Wrapper className="gap-3 gap-lg-0 mt-lg-1">
         {/*  */}
 
-        <ProjectInfo className=" d-flex flex-column col-12 gap-3 px-2 px-sm-3 px-lg-4 col-xl-5 gap-lg-1 bor1">
+        <ProjectInfo className=" d-flex flex-column col-12 col-xl-5 gap-3 gap-lg-2 px-2 px-sm-3 px-lg-4 pt-xl-5">
           <Title>{thisProjectInfo.title}</Title>
 
-          <div className="bor1 d-flex flex-wrap">
+          <div className="d-flex flex-wrap gap-3 gap-md-0">
             {""}
 
-            <div className="bor2 col-md-8 mb-md-3 order-lg-0 col-lg-6 col-xl-12">
-              <Subtitles className="d-flex flex-column text-start flex-md-row gap-lg-3 flex-lg-column gap-xl-1">
+            <div className="col-md-6 p-md-2 m-lg-0 order-lg-0 col-lg-6 col-xl-12">
+              <Subtitles className="d-flex flex-column text-start gap-lg-3 gap-xl-1 flex-lg-column">
                 Descripcion:
-                <Descriptions className="text-start px-md-2">
+                <Descriptions className="text-start">
                   {thisProjectInfo.descripcion}
                 </Descriptions>
               </Subtitles>
@@ -59,20 +56,13 @@ export const FullProjectView = () => {
 
             {""}
 
-            <div className="d-flex flex-column justify-content-start text-start col-md-4 gap-md-2 col-lg-6 order-lg-3 mt-lg-3 flex-xl-row">
-              <Subtitles>Fecha de realización:</Subtitles>
-              <Descriptions className="text-start">
-                {thisProjectInfo.finishedDate}
-              </Descriptions>
-            </div>
-
             {""}
 
-            <div className="col-12 col-lg-6 mt-md-2 mb-md-4 order-lg-1 col-xl-12 bor1">
+            <div className="col-12 col-md-6 p-md-2 col-lg-6 m-lg-0 order-lg-1 col-xl-12">
               <Subtitles className="text-start">
                 Tecnologias utilizadas:
               </Subtitles>
-              <TechnologiesImgContainer className="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start mt-md-2">
+              <TechnologiesImgContainer className="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-center justify-content-xl-start mt-md-2">
                 {imagesUsed.map((tecno, i) => {
                   return (
                     <img
@@ -86,39 +76,42 @@ export const FullProjectView = () => {
               </TechnologiesImgContainer>
             </div>
 
-            <div className="bor2 col-12 order-lg-2">
-              {thisProjectInfo.otherTechnologies === "" ? (
-                ""
-              ) : (
-                <>
-                  <Subtitles className="text-start">
-                    Otras tecnologias utilizadas:
-                  </Subtitles>
-                  <Descriptions className="text-start">
-                    {thisProjectInfo.otherTechnologies}
-                  </Descriptions>
-                </>
-              )}
+            {thisProjectInfo.otherTechnologies === "" ? (
+              ""
+            ) : (
+              <div className="col-12 col-md-12 col-lg-12 order-lg-2 mt-lg-3 ">
+                {" "}
+                <Subtitles className="text-start ">
+                  Otras tecnologias utilizadas:
+                </Subtitles>
+                <Descriptions className="text-start ">
+                  {thisProjectInfo.otherTechnologies}
+                </Descriptions>{" "}
+              </div>
+            )}
+
+            <div className="d-flex align-items-center justify-content-start text-start col-12 gap-2 col-lg-12 order-lg-3 mt-md-4 m-lg-0 mt-lg-3 flex-xl-column align-items-xl-start">
+              <Subtitles className="text-start">
+                Fecha de realización:
+              </Subtitles>
+              <Descriptions className="text-start">
+                {thisProjectInfo.finishedDate}
+              </Descriptions>
             </div>
           </div>
-          <LinkButton href={thisProjectInfo.btnLinkSite}>
-            Visitar Sitio
-          </LinkButton>
+          <div className="my-lg-2">
+            <LinkButton href={thisProjectInfo.btnLinkSite}>
+              Visitar Sitio
+            </LinkButton>
+          </div>
         </ProjectInfo>
 
-        <div className="col-12 col-xl-7 d-flex flex-wrap justify-content-center gap-3 px-2 px-md-0 p-lg-0 bor1 my-md-3">
-          <ProjectImgContainer className="col-12 col-sm-8 col-md-5 col-xl-8">
-            <img src={thisProjectInfo.img1} alt="" />
-          </ProjectImgContainer>
-          <ProjectImgContainer className="col-12 col-sm-6 col-md-6 col-xl-5">
-            <img src={thisProjectInfo.img2} alt="" />
-          </ProjectImgContainer>
-          <ProjectImgContainer className="col-12 col-sm-5 col-md-6 col-xl-5">
-            <img src={thisProjectInfo.img3} alt="" />
-          </ProjectImgContainer>
-          <ProjectImgContainer className="col-12 col-sm-8 col-md-5 col-xl-6">
-            <img src={thisProjectInfo.img4} alt="" />
-          </ProjectImgContainer>
+        <div className="col-12 col-xl-7 d-flex flex-wrap justify-content-center gap-3 gap-lg-2 px-2 px-md-0 p-lg-0 my-md-3">
+          {thisProjectInfo.images.map((img, i) => {
+            return (
+              <ModalProjectImg imgRoute={img} cols={columnsImagesProject[i]} />
+            );
+          })}
         </div>
       </Wrapper>
     </ProjectViewContainer>
@@ -143,10 +136,12 @@ const ProjectViewContainer = styled.div`
   display: grid;
 
   @media screen and (min-width: 992px) {
-    width: 75%;
+    width: 80%;
+    margin-left: 20%;
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
+    margin-left: 17.5%;
   }
 `;
 
@@ -163,11 +158,15 @@ const Wrapper = styled.div`
 `;
 
 const ProjectInfo = styled.div`
-  border-right: 2px dashed #00a19b;
+  border: 0;
+  div {
+    animation: ${RevealAnim} 1s;}
+  @media screen and (min-width: 1200px) {
+    border-right: 2px dashed #00a19b;
+  }
 `;
 
 const ProjectImgContainer = styled.div`
-  border: 3px solid yellow;
   display: flex;
   align-items: center;
   img {
@@ -180,6 +179,15 @@ const ProjectImgContainer = styled.div`
     /* animation: name duration timing-function delay iteration-count direction
       fill-mode; */
     animation: ${RevealAnim} 1s;
+    cursor: zoom-in;
+    transition: all 0.3s;
+    &:hover {
+      filter: brightness(0.7);
+      box-shadow: 1px 2px 4px rgb(37, 149, 190), 1px 2px 4px rgb(37, 149, 190),
+        1px 2px 4px rgb(37, 149, 190), 1px 2px 4px rgb(37, 149, 190),
+        1px 2px 4px rgb(37, 149, 190), -2px -4px -6px rgb(37, 149, 190),
+        2px -4px -6px rgb(37, 149, 190), 2px -4px -6px rgb(37, 149, 190);
+    }
   }
 `;
 
@@ -196,9 +204,9 @@ const TechnologiesImgContainer = styled.div`
       width: 68px;
       height: 68px;
     }
-    @media screen and (min-width: 1100px) {
-      width: 75px;
-      height: 75px;
+    @media screen and (min-width: 1200px) {
+      width: 55px;
+      height: 55px;
     }
   }
 `;
@@ -211,6 +219,7 @@ const Title = styled.p`
     1px 2px 4px rgba(37, 150, 190, 0.6);
   text-align: center;
   font-size: 1.5rem;
+  margin: 0;
 `;
 
 const Subtitles = styled.p`
@@ -231,7 +240,7 @@ const Subtitles = styled.p`
 const Descriptions = styled.p`
   font-family: "Chivo Mono", monospace;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin: 0;
   text-shadow: none;
   @media screen and (min-width: 600px) {

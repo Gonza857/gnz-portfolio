@@ -129,10 +129,12 @@ const AboutmeSection = styled.div`
   background-size: cover;
   @media screen and (min-width: 992px) {
     width: 80%;
+    margin-left: 20%;
     background: url(./assets/images/aboutme_bg.svg);
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
+    margin-left: 17.5%;
   }
 `;
 

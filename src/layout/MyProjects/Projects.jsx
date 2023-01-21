@@ -5,9 +5,9 @@ import { projectsInfo } from "../../projectsData/projectsData";
 
 function Projects() {
   return (
-    <ProjectsSection className="col-md-12 col-lg-9 col-xl-10 bor3 d-flex flex-column">
+    <ProjectsSection className="col-md-12 col-lg-9 col-xl-10 d-flex flex-column pt-lg-5">
       <SectionTitle>Mis proyectos</SectionTitle>
-      <Wrapper className="col-11 bor2">
+      <Wrapper className="col-11">
         <ProjectsWrapper>
           {projectsInfo.map((proyecto, i) => {
             return <ProjectCard key={i} data={proyecto} id={i} />;
@@ -27,16 +27,17 @@ const ProjectsSection = styled.div`
   background-image: url(./assets/images/projects_bg.svg);
   background-size: cover;
   transition: all 0.5s;
-  overflow: hidden;
   @media screen and (max-width: 992px) {
     background-size: cover;
     background-image: url(./assets/images/projects_bg_mobile.svg);
   }
   @media screen and (min-width: 992px) {
-    width: 75%;
+    width: 80%;
+    margin-left: 20%;
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
+    margin-left: 17.5%;
   }
 `;
 
@@ -44,6 +45,7 @@ const Wrapper = styled.div`
   min-height: 90%;
   margin: auto;
   overflow-y: scroll;
+  overflow: visible;
   display: flex;
   flex-wrap: wrap;
   ::-webkit-scrollbar {
@@ -74,5 +76,5 @@ const ProjectsWrapper = styled.div`
   align-content: flex-start;
   flex-wrap: wrap;
   gap: 15px;
-  border: 5px solid red;
+  overflow: visible;
 `;

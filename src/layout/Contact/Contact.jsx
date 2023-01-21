@@ -191,9 +191,11 @@ const ContactContainer = styled.div`
     background-image: url(./assets/images/contact_bg.svg);
     background-size: cover;
     width: 80%;
+    margin-left: 20%;
   }
   @media screen and (min-width: 1200px) {
     width: 82.5%;
+    margin-left: 17.5%;
   }
 `;
 

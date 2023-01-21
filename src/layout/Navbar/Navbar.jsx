@@ -102,7 +102,7 @@ function Navbar() {
         <AiOutlineRollback style={{ color: "#FFF", fontSize: "2.5rem" }} />
       </GoBackBtn>
 
-      <MenuTogglerBtn style={!isOpenMenu ? { marginLeft: "-250px" } : {}}>
+      <MenuTogglerBtn style={!isOpenMenu ? { marginLeft: "-260px" } : {}}>
         {!isOpenMenu ? (
           <AiOutlineBars
             style={{ color: "#FFF", fontSize: "2.5rem" }}
@@ -136,15 +136,6 @@ const agitar = keyframes`
     }
 `;
 
-const closeMenu = keyframes`
-    0% {
-        width: 0;
-    } 
-    100% {
-        width: 225px
-    }
-`;
-
 const SectionNav = styled.section`
   display: flex;
   position: absolute;
@@ -158,7 +149,7 @@ const SectionNav = styled.section`
   transition: all 0.5s ease;
   @media screen and (min-width: 992px) {
     width: 20%;
-    position: relative;
+    position: fixed;
   }
   @media screen and (min-width: 1200px) {
     width: 17.5%;
@@ -179,7 +170,7 @@ const Wrapper = styled.div`
 
 const GoBackBtn = styled.div`
   position: absolute;
-  left: 280px;
+  left: 250px;
   transition: all 0.2s;
   padding: 10px 20px;
   transition: all 0.5s ease;
@@ -192,13 +183,13 @@ const GoBackBtn = styled.div`
   }
   @media screen and (min-width: 992px) {
     display: block;
+    left: 280px;
   }
 `;
 
 const MenuTogglerBtn = styled.div`
   position: relative;
-  transition: all 0.2s;
-  padding: 20px;
+  padding: 15px 20px;
   transition: all 0.5s ease;
   svg {
     cursor: pointer;
@@ -326,7 +317,10 @@ const DevInfo = styled.div`
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  font-size: 13px;
+  font-size: 0.8rem;
   font-family: "Chivo Mono", monospace;
   text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6);
+  @media screen and (min-width: 992px) {
+    font-size: 0.7rem;
+  }
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 function ProjectCard({ data, id }) {
   console.log(data.entrada);
@@ -16,10 +16,10 @@ function ProjectCard({ data, id }) {
       </ImgContainer>
       <ProjectInfo>
         <ProjectTitle>{data.titulo}</ProjectTitle>
-        <p className="m-0">
+        <ProjectDescription className="m-0">
           {data.descripcion}
           <Link to={`/project/${id}`}>Ver más.</Link>
-        </p>
+        </ProjectDescription>
       </ProjectInfo>
     </ProjectCardContainer>
   );
@@ -27,8 +27,31 @@ function ProjectCard({ data, id }) {
 
 export default ProjectCard;
 
+const RevealAnim = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const agitar = keyframes`
+    0% {
+        transform: translateX(0px) rotate(0deg);
+    } 
+    40% {
+        transform: translateX(-2px) rotate(-2deg);
+    }
+    80% {
+        transform: translateX(2px) rotate(2deg);
+    }
+    100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+`;
+
 const ProjectCardContainer = styled.div`
-  min-width: 300px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -37,14 +60,19 @@ const ProjectCardContainer = styled.div`
   border: 1px solid #00a19b;
   border-radius: 20px;
   padding: 0 15px;
-  @media screen and (max-width: 400px) {
-    width: 100%;
-    gap: 10px;
+  min-width: 280px;
+  gap: 10px;
+  animation: ${RevealAnim} 1s;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: 0px 0px 50px 0px rgba(0, 161, 155, 0.75);
+  }
+  @media screen and (min-width: 400px) {
+    min-width: 300px;
   }
 `;
 
 const ImgContainer = styled.div`
-  border: 1px solid #00a19b;
   img {
     width: 50px;
     height: 50px;
@@ -57,21 +85,40 @@ const ImgContainer = styled.div`
 `;
 
 const ProjectInfo = styled.div`
-  border: 1px solid #00a19b;
   p {
-    @media screen and (max-width: 400px) {
-      font-size: 15px;
-    }
-    a {
-      margin-left: 8px;
-    }
+    font-family: "Chivo Mono";
   }
 `;
 
 const ProjectTitle = styled.p`
+  font-family: "Chivo Mono";
+  text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
+    1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6);
   margin: 0;
   font-weight: 600;
+  font-size: 1rem;
+  &:hover {
+    animation: ${agitar} 800ms;
+  }
   @media screen and (min-width: 400px) {
-    font-size: 18px;
+    font-size: 1rem;
+  }
+`;
+
+const ProjectDescription = styled.p`
+  font-size: 0.8rem;
+  a {
+    color: #fff;
+    text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
+      1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6),
+      1px 2px 4px rgba(37, 150, 190, 0.6);
+    margin-left: 8px;
+    transition: all 0.3s;
+    &:hover {
+      text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
+        1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6),
+        1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6),
+        1px 2px 4px rgba(37, 150, 190, 0.6);
+    }
   }
 `;
