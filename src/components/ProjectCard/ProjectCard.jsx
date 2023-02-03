@@ -15,7 +15,9 @@ function ProjectCard({ data, id }) {
         />
       </ImgContainer>
       <ProjectInfo>
-        <ProjectTitle>{data.titulo}</ProjectTitle>
+        <ProjectTitle>
+          <Link to={`/project/${id}`}>{data.titulo}</Link>
+        </ProjectTitle>
         <ProjectDescription className="m-0">
           {data.descripcion}
           <Link to={`/project/${id}`}>Ver más.</Link>
@@ -90,18 +92,18 @@ const ProjectInfo = styled.div`
   }
 `;
 
-const ProjectTitle = styled.p`
-  font-family: "Chivo Mono";
-  text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
-    1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6);
-  margin: 0;
-  font-weight: 600;
-  font-size: 1rem;
-  &:hover {
-    animation: ${agitar} 800ms;
-  }
-  @media screen and (min-width: 400px) {
+const ProjectTitle = styled.div`
+  a {
+    font-family: "Chivo Mono";
+    text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
+      1px 2px 4px rgba(37, 150, 190, 0.6);
+    margin: 0;
+    font-weight: 600;
     font-size: 1rem;
+    color: #fff;
+    @media screen and (min-width: 400px) {
+      font-size: 1rem;
+    }
   }
 `;
 

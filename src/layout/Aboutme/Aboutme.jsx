@@ -219,7 +219,6 @@ const DevDescription = styled.div`
 `;
 
 const DevTechnologies = styled.div`
-  border-bottom: 1px dashed #00a19b;
   @media screen and (max-width: 600px) {
     border-top: 1px dashed #00a19b;
     padding-bottom: 20px;

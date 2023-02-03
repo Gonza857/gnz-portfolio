@@ -4,7 +4,9 @@ import styled from "styled-components";
 function LinkButton(props) {
   return (
     <PrimaryButton>
-      <a href={props.href}>{props.children}</a>
+      <a href={props.href} target="_BLANK">
+        {props.children}
+      </a>
     </PrimaryButton>
   );
 }

@@ -8,6 +8,13 @@ function Home() {
   const { isOpenMenu, setIsOpenMenu } = useContext(userContext);
   const goTo = useNavigate();
 
+  const closeSideBar = () => {
+    window.scrollTo(0, 0);
+    if (window.screen.width < 992) {
+      setIsOpenMenu(false);
+    }
+  };
+
   useEffect(() => {
     console.log(isOpenMenu);
   }, [isOpenMenu]);
@@ -40,7 +47,10 @@ function Home() {
           </motion.p>
           <div className="d-flex justify-content-start gap-3 animate__animated animate__fadeInUp">
             <motion.button
-              onClick={() => goTo("/projects")}
+              onClick={() => {
+                goTo("/projects");
+                closeSideBar();
+              }}
               initial={{ y: 500, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -48,7 +58,10 @@ function Home() {
               Ver proyectos
             </motion.button>
             <motion.button
-              onClick={() => goTo("/aboutme")}
+              onClick={() => {
+                goTo("/aboutme");
+                closeSideBar()
+              }}
               initial={{ y: 500, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}

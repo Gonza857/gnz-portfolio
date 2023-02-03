@@ -35,7 +35,7 @@ export const FullProjectView = () => {
   }, []);
 
   return (
-    <ProjectViewContainer className="col-md-12 col-lg-9 col-xl-10 pt-5 pt-xl-0">
+    <ProjectViewContainer className="col-md-12 col-lg-9 col-xl-10 pt-5 pt-xl-0 pb-5 pb-lg-0">
       <Wrapper className="gap-3 gap-lg-0 mt-lg-1">
         {/*  */}
 
@@ -160,7 +160,8 @@ const Wrapper = styled.div`
 const ProjectInfo = styled.div`
   border: 0;
   div {
-    animation: ${RevealAnim} 1s;}
+    animation: ${RevealAnim} 1s;
+  }
   @media screen and (min-width: 1200px) {
     border-right: 2px dashed #00a19b;
   }

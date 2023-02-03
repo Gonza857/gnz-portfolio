@@ -11,8 +11,6 @@ import {
 } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../../storage/UserContext";
-import { motion } from "framer-motion";
-import { FaBars } from "react-icons/fa";
 import { AiOutlineBars, AiOutlineClose } from "react-icons/ai";
 
 function Navbar() {
@@ -22,6 +20,7 @@ function Navbar() {
   const iconSize = { fontSize: "1.9rem" };
 
   const closeSideBar = () => {
+    window.scrollTo(0, 0);
     if (window.screen.width < 992) {
       setIsOpenMenu(false);
     }
@@ -93,7 +92,7 @@ function Navbar() {
         </LeftNav>
         {/* --------------- */}
         <DevInfo>
-          <p className="p-0 m-0">Developed by Gonzalo Ramos</p>
+          <p className="p-0 m-0">Desarrollado por Gonzalo Ramos</p>
         </DevInfo>
       </Wrapper>
 
