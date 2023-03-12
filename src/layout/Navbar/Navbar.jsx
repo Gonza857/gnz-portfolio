@@ -28,10 +28,12 @@ function Navbar() {
 
   return (
     <SectionNav>
-      <Wrapper style={{ left: `${isOpenMenu ? "0" : "-250px"}` }}>
+      <Wrapper className={`${isOpenMenu ? "closedBar" : "openBar"}`}>
         {/* --------------- */}
-        <SectionTitleContainer>
-          <h1>Mi Portfolio</h1>
+        <SectionTitleContainer className="">
+          <Link to="/">
+            <img src="../assets/images/footerLogo.png" alt="" />
+          </Link>
         </SectionTitleContainer>
         <LeftNav className="text-center text-white m-0 p-0">
           {/* --------------- */}
@@ -69,7 +71,7 @@ function Navbar() {
 
           {/* --------------- */}
           <DownloadCvContainer>
-            <a href="./assets/pdf/cv_gonzaloRamos.pdf" download>
+            <a href="./assets/pdf/CV_RAMOS-GONZALO.pdf" download>
               Descargar CV
               <AiOutlineDownload style={{ fontSize: "20px" }} />
             </a>
@@ -101,7 +103,7 @@ function Navbar() {
         <AiOutlineRollback style={{ color: "#FFF", fontSize: "2.5rem" }} />
       </GoBackBtn>
 
-      <MenuTogglerBtn style={!isOpenMenu ? { marginLeft: "-260px" } : {}}>
+      <MenuTogglerBtn className={`${isOpenMenu ? "closedBtn" : "openBtn"}`}>
         {!isOpenMenu ? (
           <AiOutlineBars
             style={{ color: "#FFF", fontSize: "2.5rem" }}
@@ -146,30 +148,51 @@ const SectionNav = styled.section`
   top: 0;
   left: 0;
   transition: all 0.5s ease;
-  @media screen and (min-width: 992px) {
-    width: 20%;
-    position: fixed;
+
+  .closedBar {
+    transform: translateX(0);
   }
-  @media screen and (min-width: 1200px) {
-    width: 17.5%;
+  .openBar {
+    transform: translateX(0);
+  }
+  .closedBtn {
+    transform: translateX(-310%);
+  }
+  .openBtn {
+    transform: translateX(0);
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 15%;
+    position: fixed;
   }
 `;
 
 const Wrapper = styled.div`
-  background-image: url(../assets/images/navbar_bg.svg);
+  /* transform: translateX(100px); */
+  background-color: #003836;
+  /* background-image: url(../assets/images/navbar_bg.svg);  */
   background-size: cover;
   border-right: 2px dashed #00a19b;
   transition: all 0.5s ease;
   position: relative;
   width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   @media screen and (min-width: 992px) {
     width: 100%;
   }
 `;
 
 const GoBackBtn = styled.div`
-  position: absolute;
-  left: 250px;
+  /* border: 1px solid red; */
+  width: fit-content;
+  position: fixed;
+  right: 0;
+  z-index: 3000;
   transition: all 0.2s;
   padding: 10px 20px;
   transition: all 0.5s ease;
@@ -182,7 +205,6 @@ const GoBackBtn = styled.div`
   }
   @media screen and (min-width: 992px) {
     display: block;
-    left: 280px;
   }
 `;
 
@@ -202,10 +224,16 @@ const MenuTogglerBtn = styled.div`
 `;
 
 const SectionTitleContainer = styled.div`
-  width: 80%;
+  width: 90%;
   height: 20%;
-  margin: auto;
-  h1 {
+  /* border: 4px solid blue; */
+  display: flex;
+  img {
+    /* border: 4px solid yellow; */
+    width: 100%;
+    object-fit: contain;
+  }
+  /* h1 {
     font-family: "Chivo Mono", monospace;
     text-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
       1px 2px 4px rgba(37, 150, 190, 0.6), 1px 2px 4px rgba(37, 150, 190, 0.6),
@@ -218,12 +246,12 @@ const SectionTitleContainer = styled.div`
     @media screen and (min-width: 992px) {
       font-size: 2rem;
     }
-  }
+  } */
 `;
 
 const LeftNav = styled.nav`
   width: 100%;
-  height: 75%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

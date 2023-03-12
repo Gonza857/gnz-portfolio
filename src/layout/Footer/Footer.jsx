@@ -17,8 +17,12 @@ function Footer() {
   return (
     <StyledFooter className="p-2 py-4 d-flex flex-wrap">
       <CopySection className="col-12 col-md-8">
-        <h2>Logo - Gonzalo Ramos</h2>
-        <p>© Gonzalo Ramos - 2023. Todos los derechos reservados.</p>
+        <LogoContainer>
+          <img src="../assets/images/footerLogo.png" alt="Portfolio Logo" />
+        </LogoContainer>
+        <TextContainer>
+          <p>© Gonzalo Ramos - 2023. Todos los derechos reservados.</p>
+        </TextContainer>
       </CopySection>
       <LinksSection className="col-12 col-md-4">
         <p>Secciones</p>
@@ -74,8 +78,8 @@ const StyledFooter = styled.footer`
     margin-left: 20%;
   }
   @media screen and (min-width: 1200px) {
-    width: 82.5%;
-    margin-left: 17.5%;
+    width: 85%;
+    margin-left: 15%;
   }
 `;
 
@@ -121,7 +125,30 @@ const CopySection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 15px;
+`;
+
+const LogoContainer = styled.div`
+  transition: all 1s;
+  &:hover {
+    transform: rotate(360deg) scale(1.1);
+  }
+  img {
+    background-color: #000;
+    box-shadow: 0px 0px 15px 3px rgba(0, 161, 155, 0.75);
+    -webkit-box-shadow: 0px 0px 15px 3px rgba(0, 161, 155, 0.75);
+    -moz-box-shadow: 0px 0px 15px 3px rgba(0, 161, 155, 0.75);
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+`;
+
+const TextContainer = styled.div`
   p {
+    font-family: "Chivo Mono", monospace;
     margin: 0;
     text-align: center;
   }

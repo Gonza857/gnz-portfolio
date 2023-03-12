@@ -60,7 +60,7 @@ function Home() {
             <motion.button
               onClick={() => {
                 goTo("/aboutme");
-                closeSideBar()
+                closeSideBar();
               }}
               initial={{ y: 500, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -115,12 +115,12 @@ const MainSection = styled.div`
   overflow: hidden;
 
   @media screen and (min-width: 992px) {
-    width: 80%;
+    width: 85%;
     margin-left: 20%;
   }
   @media screen and (min-width: 1200px) {
-    width: 82.5%;
-    margin-left: 17.5%;
+    width: 85%;
+    margin-left: 15%;
   }
 `;
 
