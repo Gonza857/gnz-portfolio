@@ -74,6 +74,6 @@ const ProjectsWrapper = styled.div`
   justify-content: center;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   overflow: visible;
 `;

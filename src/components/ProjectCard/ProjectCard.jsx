@@ -5,18 +5,17 @@ import MainBtn from "../Button/MainBtn";
 
 function ProjectCard({ data, id }) {
   return (
-    <ProjectCardContainer className="col-11 col-md-11 col-lg-10 col-xl-8 d-flex flex-column flex-md-row p-2 p-lg-0">
-      <div className="col-12 col-md-9 col-lg-10 bor2 d-flex flex-wrap justify-content-around align-items-center gap-1 gap-lg-0">
-        <ImgContainer className="col-2 bor1">
+    <ProjectCardContainer className="col-12 col-md-11 col-lg-10 col-xl-8 d-flex flex-column flex-md-row px-1 py-2 py-lg-0 px-lg-0 gap-3 gap-md-0">
+      <div className="col-12 col-md-9 col-lg-9 d-flex flex-wrap justify-content-around justify-content-lg-between align-items-center py-lg-3">
+        <ImgContainer className="col-2 col-md-2 p-1 p-md-0">
           <img
-            className="bor2"
             src={data.imgLocalRoute}
             alt="Project Logo"
             style={data.imgBorderCircle ? { borderRadius: "50%" } : {}}
           />
         </ImgContainer>
 
-        <ProjectInfo className="col-9 bor3">
+        <ProjectInfo className="col-8 col-md-9 col-lg-10">
           <ProjectTitle>
             <Link to={`/project/${id}`}>{data.titulo}</Link>
           </ProjectTitle>
@@ -26,7 +25,7 @@ function ProjectCard({ data, id }) {
         </ProjectInfo>
       </div>
 
-      <div className="d-flex gap-2 bor3">
+      <div className="d-flex gap-2 ms-md-4">
         <MainBtn>
           <Link to={`/project/${id}`}>Ver más</Link>
         </MainBtn>
@@ -65,11 +64,10 @@ const ProjectCardContainer = styled.div`
   min-height: 100px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   color: #fff;
   border: 1px solid rgba(37, 150, 190, 0.6);
   border-radius: 5px;
-  padding: 0 15px;
   min-width: 280px;
   animation: ${RevealAnim} 1s;
   transition: all 0.3s;
@@ -87,6 +85,7 @@ const ProjectCardContainer = styled.div`
 const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
+  width: fit-content;
   img {
     width: 70px;
     height: 70px;
@@ -121,6 +120,9 @@ const ProjectTitle = styled.div`
 
 const ProjectDescription = styled.p`
   font-size: 0.6rem;
+  @media screen and (min-width: 600px) {
+    font-size: 0.8rem;
+  }
   a {
     color: #fff;
     text-shadow: 2px 2px 5px rgba(203, 0, 7, 0.75),
