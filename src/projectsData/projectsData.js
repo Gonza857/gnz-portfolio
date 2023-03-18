@@ -2,9 +2,10 @@ export const projectsInfo = [
   {
     id: 0,
     titulo: "Proyecto Coderhouse",
-    descripcion: "Proyecto final del curso de desarrollo web.",
-    imgLocalRoute: "../assets/images/desarrolloweb_logo.png",
-    imgBorderCircle: false,
+    descripcion:
+      "Proyecto final del curso de desarrollo web. Este sitio esta destinado para un restaurant, con fines informativos.",
+    imgLocalRoute: "../assets/images/desarrolloweb_logo.jpg",
+    imgBorderCircle: true,
     thisProjectInfo: {
       images: [
         "../assets/images/project1-dw-course/img1.png",
@@ -34,7 +35,8 @@ export const projectsInfo = [
   {
     id: 1,
     titulo: "Proyecto Coderhouse",
-    descripcion: "Proyecto final del curso de Javascript.",
+    descripcion:
+      "Proyecto final del curso de Javascript. Se aplicó para crear una aplicación web C.R.U.D para administrar cursos y alumnos.",
     imgLocalRoute: "../assets/images/javascript_logo.png",
     imgBorderCircle: false,
     thisProjectInfo: {
@@ -66,7 +68,8 @@ export const projectsInfo = [
   {
     id: 2,
     titulo: "Proyecto Coderhouse",
-    descripcion: "Proyecto final del curso de React JS.",
+    descripcion:
+      "Proyecto final del curso de React JS. Desarrollo Frontend de un e-commerce web utilizando React JS.",
     imgLocalRoute: "../assets/images/react_logo.svg",
     imgBorderCircle: true,
     thisProjectInfo: {
@@ -101,7 +104,8 @@ export const projectsInfo = [
   {
     id: 3,
     titulo: "Proyecto Red Solana",
-    descripcion: "Proyecto C.R.U.D para un casino.",
+    descripcion:
+      "Proyecto destinado para administrar cajeros con funcionalidad C.R.U.D. Se pueden ver, editar, eliminar y agregar cajeros desde una sección administrativa con validación y login.",
     imgLocalRoute: "../assets/images/redsolana_logo.png",
     imgBorderCircle: true,
     thisProjectInfo: {
@@ -212,8 +216,8 @@ export const technologiesImages = [
 ];
 
 export const columnsImagesProject = [
-  "col-12 col-sm-6 col-lg-6 col-xl-9",
+  "col-12 col-sm-6 col-lg-6 col-xl-8",
   "col-12 col-sm-5 col-lg-5 col-xl-5",
-  "col-12 col-sm-5 col-lg-5 col-xl-6",
+  "col-12 col-sm-5 col-lg-5 col-xl-5",
   "col-12 col-sm-6 col-lg-6 col-xl-8",
 ];

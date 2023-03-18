@@ -22,88 +22,93 @@ function Navbar() {
   const closeSideBar = () => {
     window.scrollTo(0, 0);
     if (window.screen.width < 992) {
-      setIsOpenMenu(false);
+      setIsOpenMenu(true);
     }
   };
 
+  useEffect(() => {
+    // console.log(isOpenMenu);
+    console.log(isOpenMenu ? "abierto" : "cerrrado");
+  }, []);
+
   return (
-    <SectionNav>
-      <Wrapper className={`${isOpenMenu ? "closedBar" : "openBar"}`}>
-        {/* --------------- */}
-        <SectionTitleContainer className="">
-          <Link to="/">
-            <img src="../assets/images/footerLogo.png" alt="" />
-          </Link>
-        </SectionTitleContainer>
-        <LeftNav className="text-center text-white m-0 p-0">
+    <>
+      <SectionNav
+        style={{
+          transform: `${!isOpenMenu ? "translateX(-100%)" : "translateX(0)"}`,
+        }}
+      >
+        <Wrapper className={`${!isOpenMenu ? "closedBar" : "openBar"}`}>
           {/* --------------- */}
-          <NavUlWrapper className="p-0 m-0">
-            <NavUl className="m-0 p-0">
-              <li>
-                <Link to="/" onClick={() => closeSideBar()}>
-                  <AiOutlineHome style={iconSize} />
-                  Inicio
-                </Link>
-              </li>
+          <SectionTitleContainer className="">
+            <Link to="/">
+              <img src="../assets/images/footerLogo.png" alt="" />
+            </Link>
+          </SectionTitleContainer>
+          <LeftNav className="text-center text-white m-0 p-0">
+            {/* --------------- */}
+            <NavUlWrapper className="p-0 m-0">
+              <NavUl className="m-0 p-0">
+                <li>
+                  <Link to="/" onClick={() => closeSideBar()}>
+                    <AiOutlineHome style={iconSize} />
+                    Inicio
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/aboutme" onClick={() => closeSideBar()}>
-                  <AiOutlineUser style={iconSize} />
-                  Sobre Mi
-                </Link>
-              </li>
+                <li>
+                  <Link to="/aboutme" onClick={() => closeSideBar()}>
+                    <AiOutlineUser style={iconSize} />
+                    Sobre Mi
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/projects" onClick={() => closeSideBar()}>
-                  <AiFillDatabase style={iconSize} />
-                  Proyectos
-                </Link>
-              </li>
+                <li>
+                  <Link to="/projects" onClick={() => closeSideBar()}>
+                    <AiFillDatabase style={iconSize} />
+                    Proyectos
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/contact" onClick={() => closeSideBar()}>
-                  <AiOutlineUser style={iconSize} />
-                  Contacto
-                </Link>
-              </li>
-            </NavUl>
-          </NavUlWrapper>
+                <li>
+                  <Link to="/contact" onClick={() => closeSideBar()}>
+                    <AiOutlineUser style={iconSize} />
+                    Contacto
+                  </Link>
+                </li>
+              </NavUl>
+            </NavUlWrapper>
 
-          {/* --------------- */}
-          <DownloadCvContainer>
-            <a href="./assets/pdf/CV_RAMOS-GONZALO.pdf" download>
-              Descargar CV
-              <AiOutlineDownload style={{ fontSize: "20px" }} />
-            </a>
-          </DownloadCvContainer>
-
-          {/* --------------- */}
-          <DevRRSS>
-            <div>
-              <a href="https://github.com/Gonza857" target="_BLANK">
-                <AiFillGithub style={{ fontSize: "32px" }} />
+            {/* --------------- */}
+            <DownloadCvContainer>
+              <a href="./assets/pdf/CV_RAMOS-GONZALO.pdf" download>
+                Descargar CV
+                <AiOutlineDownload style={{ fontSize: "20px" }} />
               </a>
-              <a
-                href="https://www.linkedin.com/in/gonzaloramos-webdev"
-                target="_BLANK"
-              >
-                <AiFillLinkedin style={{ fontSize: "32px" }} />
-              </a>
-            </div>
-          </DevRRSS>
-        </LeftNav>
-        {/* --------------- */}
-        <DevInfo>
-          <p className="p-0 m-0">Desarrollado por Gonzalo Ramos</p>
-        </DevInfo>
-      </Wrapper>
+            </DownloadCvContainer>
 
-      <GoBackBtn onClick={() => history(-1)}>
-        {" "}
-        <AiOutlineRollback style={{ color: "#FFF", fontSize: "2.5rem" }} />
-      </GoBackBtn>
-
-      <MenuTogglerBtn className={`${isOpenMenu ? "closedBtn" : "openBtn"}`}>
+            {/* --------------- */}
+            <DevRRSS>
+              <div>
+                <a href="https://github.com/Gonza857" target="_BLANK">
+                  <AiFillGithub style={{ fontSize: "32px" }} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/gonzaloramos-webdev"
+                  target="_BLANK"
+                >
+                  <AiFillLinkedin style={{ fontSize: "32px" }} />
+                </a>
+              </div>
+            </DevRRSS>
+          </LeftNav>
+          {/* --------------- */}
+          <DevInfo>
+            <p className="p-0 m-0">Desarrollado por Gonzalo Ramos</p>
+          </DevInfo>
+        </Wrapper>
+      </SectionNav>
+      <MenuTogglerBtn className={`${isOpenMenu ? "openBtn" : "closedBtn"}`}>
         {!isOpenMenu ? (
           <AiOutlineBars
             style={{ color: "#FFF", fontSize: "2.5rem" }}
@@ -116,7 +121,10 @@ function Navbar() {
           />
         )}
       </MenuTogglerBtn>
-    </SectionNav>
+      <GoBackBtn onClick={() => history(-1)}>
+        <AiOutlineRollback style={{ color: "#FFF", fontSize: "2.5rem" }} />
+      </GoBackBtn>
+    </>
   );
 }
 
@@ -139,29 +147,18 @@ const agitar = keyframes`
 
 const SectionNav = styled.section`
   display: flex;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   min-height: 100vh;
   pointer-events: auto;
-  width: fit-content;
-  position: fixed;
-  top: 0;
-  left: 0;
   transition: all 0.5s ease;
-
-  .closedBar {
-    transform: translateX(0);
-  }
+  opacity: 1;
   .openBar {
     transform: translateX(0);
   }
-  .closedBtn {
-    transform: translateX(-310%);
-  }
-  .openBtn {
+  .closedBar {
     transform: translateX(0);
   }
-
   @media screen and (min-width: 992px) {
     width: 15%;
     position: fixed;
@@ -169,32 +166,31 @@ const SectionNav = styled.section`
 `;
 
 const Wrapper = styled.div`
-  /* transform: translateX(100px); */
+  width: 200px;
   background-color: #003836;
-  /* background-image: url(../assets/images/navbar_bg.svg);  */
   background-size: cover;
   border-right: 2px dashed #00a19b;
   transition: all 0.5s ease;
   position: relative;
-  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  @media screen and (min-width: 768px) {
+    width: 250px;
+  }
   @media screen and (min-width: 992px) {
     width: 100%;
   }
 `;
 
 const GoBackBtn = styled.div`
-  /* border: 1px solid red; */
   width: fit-content;
   position: fixed;
   right: 0;
   z-index: 3000;
   transition: all 0.2s;
-  padding: 10px 20px;
+  padding: 30px;
   transition: all 0.5s ease;
   display: none;
   svg {
@@ -209,8 +205,11 @@ const GoBackBtn = styled.div`
 `;
 
 const MenuTogglerBtn = styled.div`
-  position: relative;
-  padding: 15px 20px;
+  width: fit-content;
+  position: fixed;
+  right: 0;
+  z-index: 4000;
+  padding: 20px;
   transition: all 0.5s ease;
   svg {
     cursor: pointer;
@@ -224,14 +223,18 @@ const MenuTogglerBtn = styled.div`
 `;
 
 const SectionTitleContainer = styled.div`
-  width: 90%;
+  width: 80%;
   height: 20%;
-  /* border: 4px solid blue; */
   display: flex;
+  justify-content: center;
+  align-items: center;
   img {
-    /* border: 4px solid yellow; */
     width: 100%;
     object-fit: contain;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
   /* h1 {
     font-family: "Chivo Mono", monospace;

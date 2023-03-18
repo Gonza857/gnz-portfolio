@@ -5,8 +5,8 @@ import { projectsInfo } from "../../projectsData/projectsData";
 
 function Projects() {
   return (
-    <ProjectsSection className="col-md-12 col-lg-9 col-xl-10 d-flex flex-column pt-lg-5">
-      <SectionTitle>Mis proyectos</SectionTitle>
+    <ProjectsSection className="col-md-12 col-lg-9 col-xl-10 d-flex flex-column pb-3 pb-lg-0 pt-lg-5 gap-3 gap-md-0">
+      <SectionTitle>Portfolio</SectionTitle>
       <Wrapper className="col-11">
         <ProjectsWrapper>
           {projectsInfo.map((proyecto, i) => {
@@ -24,20 +24,19 @@ const ProjectsSection = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background-image: url(./assets/images/projects_bg.svg);
-  background-size: cover;
+  background: rgb(0, 161, 155);
+  background: radial-gradient(
+    circle,
+    rgba(0, 161, 155, 1) 0%,
+    rgba(0, 44, 42, 1) 0%,
+    rgba(0, 83, 80, 1) 50%,
+    rgba(0, 44, 42, 1) 100%,
+    rgba(0, 161, 155, 1) 100%
+  );
   transition: all 0.5s;
-  @media screen and (max-width: 992px) {
-    background-size: cover;
-    background-image: url(./assets/images/projects_bg_mobile.svg);
-  }
   @media screen and (min-width: 992px) {
-    width: 80%;
-    margin-left: 20%;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 82.5%;
-    margin-left: 17.5%;
+    width: 85%;
+    margin-left: 15%;
   }
 `;
 

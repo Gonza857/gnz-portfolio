@@ -7,8 +7,6 @@ import {
 } from "../../projectsData/projectsData";
 import styled, { keyframes } from "styled-components";
 import LinkButton from "../Button/LinkButton";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { ModalProjectImg } from "../ModalProjectImg/ModalProjectImg";
 
 export const FullProjectView = () => {
@@ -39,7 +37,7 @@ export const FullProjectView = () => {
       <Wrapper className="gap-3 gap-lg-0 mt-lg-1">
         {/*  */}
 
-        <ProjectInfo className=" d-flex flex-column col-12 col-xl-5 gap-3 gap-lg-2 px-2 px-sm-3 px-lg-4 pt-xl-5">
+        <ProjectInfo className=" d-flex flex-column col-12 col-xl-5 gap-3 gap-lg-2 px-2 px-sm-3 px-lg-4 pt-xl-5 bor3">
           <Title>{thisProjectInfo.title}</Title>
 
           <div className="d-flex flex-wrap gap-3 gap-md-0">
@@ -55,9 +53,6 @@ export const FullProjectView = () => {
             </div>
 
             {""}
-
-            {""}
-
             <div className="col-12 col-md-6 p-md-2 col-lg-6 m-lg-0 order-lg-1 col-xl-12">
               <Subtitles className="text-start">
                 Tecnologias utilizadas:
@@ -106,13 +101,13 @@ export const FullProjectView = () => {
           </div>
         </ProjectInfo>
 
-        <div className="col-12 col-xl-7 d-flex flex-wrap justify-content-center gap-3 gap-lg-2 px-2 px-md-0 p-lg-0 my-md-3">
+        <ProjectImagesContainer className="col-12 col-xl-7 px-2 px-md-0 p-lg-0 gap-lg-2">
           {thisProjectInfo.images.map((img, i) => {
             return (
               <ModalProjectImg imgRoute={img} cols={columnsImagesProject[i]} />
             );
           })}
-        </div>
+        </ProjectImagesContainer>
       </Wrapper>
     </ProjectViewContainer>
   );
@@ -128,33 +123,41 @@ const RevealAnim = keyframes`
 `;
 
 const ProjectViewContainer = styled.div`
-  background-image: url(../assets/images/singleProyect_bg_mob.svg);
-  background-size: cover;
+  background: rgb(72, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(72, 0, 0, 1) 0%,
+    rgba(77, 19, 19, 1) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
   min-height: 100vh;
   transition: all 0.5s;
   overflow: hidden;
   display: grid;
-
-  @media screen and (min-width: 992px) {
-    width: 80%;
-    margin-left: 20%;
-  }
   @media screen and (min-width: 1200px) {
-    width: 82.5%;
-    margin-left: 17.5%;
+    width: 85%;
+    margin-left: 15%;
   }
 `;
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   margin: auto;
   display: flex;
   flex-direction: row;
   text-align: center;
-
   @media screen and (max-width: 1199px) {
     flex-direction: column;
   }
+`;
+
+const ProjectImagesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `;
 
 const ProjectInfo = styled.div`
@@ -164,31 +167,6 @@ const ProjectInfo = styled.div`
   }
   @media screen and (min-width: 1200px) {
     border-right: 2px dashed #00a19b;
-  }
-`;
-
-const ProjectImgContainer = styled.div`
-  display: flex;
-  align-items: center;
-  img {
-    width: 100%;
-    object-fit: contain;
-    border: 1px solid #00a19b;
-    border-radius: 15px;
-    box-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
-      -1px -2px 4px rgba(37, 150, 190, 0.6);
-    /* animation: name duration timing-function delay iteration-count direction
-      fill-mode; */
-    animation: ${RevealAnim} 1s;
-    cursor: zoom-in;
-    transition: all 0.3s;
-    &:hover {
-      filter: brightness(0.7);
-      box-shadow: 1px 2px 4px rgb(37, 149, 190), 1px 2px 4px rgb(37, 149, 190),
-        1px 2px 4px rgb(37, 149, 190), 1px 2px 4px rgb(37, 149, 190),
-        1px 2px 4px rgb(37, 149, 190), -2px -4px -6px rgb(37, 149, 190),
-        2px -4px -6px rgb(37, 149, 190), 2px -4px -6px rgb(37, 149, 190);
-    }
   }
 `;
 

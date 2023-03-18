@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 function EducationCard({ data }) {
   return (
     <CardContainer
-      className="col-12 gap-3"
+      className="col-12 col-md-6 mt-3"
       initial={{ x: 500, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -34,9 +34,8 @@ export default EducationCard;
 
 const CardContainer = styled(motion.div)`
   display: flex;
-  min-width: 300px;
   @media screen and (max-width: 992px) {
-    border-top: 1px dashed #00a19b;
+    border-bottom: 1px dashed #ff0000;
     padding: 10px 0;
   }
   @media screen and (min-width: 992px) {
@@ -50,8 +49,8 @@ const CardImage = styled.div`
   justify-content: center;
   width: 20%;
   img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     @media screen and (min-width: 992px) {
       width: 60px;
@@ -69,7 +68,7 @@ const CardInfo = styled.div`
     margin: 0;
     font-family: "Chivo Mono", monospace;
     @media screen and (max-width: 400px) {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
     @media screen and (min-width: 400px) {
       font-size: 0.8rem;
@@ -82,9 +81,6 @@ const CardInfo = styled.div`
     }
     @media screen and (min-width: 1200px) {
       font-size: 0.9rem;
-    }
-    @media screen and (min-width: 1400px) {
-      font-size: 1rem;
     }
   }
 `;

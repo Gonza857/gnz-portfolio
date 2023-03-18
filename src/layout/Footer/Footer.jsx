@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { userContext } from "../../storage/UserContext";
 
 function Footer() {
-  const { setIsOpenMenu } = useContext(userContext);
+  const { setIsOpenMenu, isOpenMenu } = useContext(userContext);
 
   const closeSideBar = () => {
     window.scrollTo(0, 0);
@@ -15,7 +15,12 @@ function Footer() {
   };
 
   return (
-    <StyledFooter className="p-2 py-4 d-flex flex-wrap">
+    <StyledFooter
+      className="p-2 py-4 d-flex flex-wrap"
+      style={{
+        opacity: `${window.screen.width < 992 && isOpenMenu ? "0.5" : "1"}`,
+      }}
+    >
       <CopySection className="col-12 col-md-8">
         <LogoContainer>
           <img src="../assets/images/footerLogo.png" alt="Portfolio Logo" />
@@ -62,22 +67,26 @@ const agitar = keyframes`
     }
 `;
 
+const girar = keyframes`
+    0% {
+        transform: rotate(0deg);
+    } 
+    100% {
+        transform: rotate(359deg);
+    }
+`;
+
 const StyledFooter = styled.footer`
   color: #fff;
   width: 100%;
   min-height: 30vh;
-  background-image: url(./assets/images/footer_bg.svg);
-  background-size: cover;
+  background-color: #003836;
   border-top: 2px dashed #00a19b;
   gap: 20px;
   @media screen and (min-width: 768px) {
     gap: 0px;
   }
   @media screen and (min-width: 992px) {
-    width: 80%;
-    margin-left: 20%;
-  }
-  @media screen and (min-width: 1200px) {
     width: 85%;
     margin-left: 15%;
   }
@@ -129,10 +138,11 @@ const CopySection = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  transition: all 1s;
-  &:hover {
+  /* transition: all 1s; */
+  animation: ${girar} 5s infinite linear;
+  /* &:hover {
     transform: rotate(360deg) scale(1.1);
-  }
+  } */
   img {
     background-color: #000;
     box-shadow: 0px 0px 15px 3px rgba(0, 161, 155, 0.75);

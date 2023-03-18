@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import styled, { keyframes } from "styled-components";
+import MainBtn from "../Button/MainBtn";
 
 export const ModalProjectImg = ({ imgRoute, cols }) => {
   const [show, setShow] = useState(false);
@@ -17,9 +18,7 @@ export const ModalProjectImg = ({ imgRoute, cols }) => {
             <ModalImg src={imgRoute} alt="" />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cerrar
-            </Button>
+            <MainBtn fn={handleClose}>Cerrar</MainBtn>
           </Modal.Footer>
         </Modal>
       </ProjectImgContainer>
@@ -44,8 +43,10 @@ const ModalImg = styled.img`
 const ProjectImgContainer = styled.div`
   display: flex;
   align-items: center;
+  height: fit-content;
   img {
     width: 100%;
+    height: fit-content;
     object-fit: contain;
     border: 1px solid #00a19b;
     border-radius: 15px;

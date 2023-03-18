@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import MainBtn from "./MainBtn";
 
 function LinkButton(props) {
   return (
-    <PrimaryButton>
+    <MainBtn type={"primary"}>
       <a href={props.href} target="_BLANK">
         {props.children}
       </a>
-    </PrimaryButton>
+    </MainBtn>
   );
 }
 
@@ -18,7 +19,7 @@ const PrimaryButton = styled.button`
   padding: 7px 15px;
   margin: 0 auto;
   display: inline-block;
-  border-radius: 15px;
+  border-radius: 5px;
   position: relative;
   overflow: hidden;
   z-index: 1;

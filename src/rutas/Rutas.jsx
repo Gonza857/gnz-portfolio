@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { FullProjectView } from "../components/FullProjectView/FullProjectView";
-import ViewProject from "../components/ViewProject/ViewProject";
 import Aboutme from "../layout/Aboutme/Aboutme";
 import Contact from "../layout/Contact/Contact";
 import Home from "../layout/Home/Home";
