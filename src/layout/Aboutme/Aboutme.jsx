@@ -14,7 +14,7 @@ function Aboutme() {
     } else {
       setIsOpenMenu(false);
     }
-  }, []);
+  }, [setIsOpenMenu]);
 
   const educationList = [
     {

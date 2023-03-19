@@ -13,14 +13,14 @@ export const FullProjectView = () => {
   const [imagesUsed, setImagesUsed] = useState([]);
   let params = useParams();
   let paramsId = params.id;
-  let searchProject = projectsInfo.find((project) => project.id == paramsId);
+  let searchProject = projectsInfo.find((project) => project.id === paramsId);
   const { thisProjectInfo } = searchProject;
 
   function filtrarTecnos() {
     let usedTecnos = [];
     technologiesImages.forEach((tecno) => {
       thisProjectInfo.technologies.forEach((tecnoUsed) => {
-        if (tecnoUsed == tecno.name) {
+        if (tecnoUsed === tecno.name) {
           usedTecnos.push(tecno);
         }
       });
@@ -75,13 +75,12 @@ export const FullProjectView = () => {
               ""
             ) : (
               <div className="col-12 col-md-12 col-lg-12 order-lg-2 mt-lg-3 ">
-                {" "}
                 <Subtitles className="text-start ">
                   Otras tecnologias utilizadas:
                 </Subtitles>
                 <Descriptions className="text-start ">
                   {thisProjectInfo.otherTechnologies}
-                </Descriptions>{" "}
+                </Descriptions>
               </div>
             )}
 

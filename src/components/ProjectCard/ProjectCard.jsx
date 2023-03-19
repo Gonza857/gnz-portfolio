@@ -45,20 +45,6 @@ const RevealAnim = keyframes`
   }
 `;
 
-const agitar = keyframes`
-    0% {
-        transform: translateX(0px) rotate(0deg);
-    } 
-    40% {
-        transform: translateX(-2px) rotate(-2deg);
-    }
-    80% {
-        transform: translateX(2px) rotate(2deg);
-    }
-    100% {
-        transform: translateX(0px) rotate(0deg);
-    }
-`;
 
 const ProjectCardContainer = styled.div`
   min-height: 100px;

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import {
   AiFillLinkedin,
@@ -25,11 +25,6 @@ function Navbar() {
       setIsOpenMenu(false);
     }
   };
-
-  useEffect(() => {
-    // console.log(isOpenMenu);
-    console.log(isOpenMenu ? "abierto" : "cerrrado");
-  }, [isOpenMenu]);
 
   return (
     <>
@@ -90,12 +85,17 @@ function Navbar() {
             {/* --------------- */}
             <DevRRSS>
               <div>
-                <a href="https://github.com/Gonza857" target="_BLANK">
+                <a
+                  href="https://github.com/Gonza857"
+                  target="_BLANK"
+                  rel="noreferrer"
+                >
                   <AiFillGithub style={{ fontSize: "32px" }} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/gonzaloramos-webdev"
                   target="_BLANK"
+                  rel="noreferrer"
                 >
                   <AiFillLinkedin style={{ fontSize: "32px" }} />
                 </a>

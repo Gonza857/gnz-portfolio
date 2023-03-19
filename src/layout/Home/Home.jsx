@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import { userContext } from "../../storage/UserContext";
 import { motion } from "framer-motion";

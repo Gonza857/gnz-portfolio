@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { AiOutlineHome } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { userContext } from "../../storage/UserContext";

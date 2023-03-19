@@ -4,7 +4,7 @@ import styled from "styled-components";
 function MainBtn({ type, children, fn, mode, modStyle }) {
   return (
     <>
-      {type == "primary" ? (
+      {type === "primary" ? (
         <MainButton onClick={fn} type={mode} style={modStyle}>
           {children}
         </MainButton>

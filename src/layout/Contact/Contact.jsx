@@ -17,7 +17,7 @@ function Contact() {
   const form = useRef();
 
   const [isSending, setIsSending] = useState(false);
-  const [validCaptcha, setValidCaptcha] = useState(false);
+  const [setValidCaptcha] = useState(false);
 
   const {
     register,

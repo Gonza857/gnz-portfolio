@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import styled, { keyframes } from "styled-components";
 import MainBtn from "../Button/MainBtn";
 
@@ -52,8 +51,6 @@ const ProjectImgContainer = styled.div`
     border-radius: 15px;
     box-shadow: 1px 2px 4px rgba(37, 150, 190, 0.6),
       -1px -2px 4px rgba(37, 150, 190, 0.6);
-    /* animation: name duration timing-function delay iteration-count direction
-      fill-mode; */
     animation: ${RevealAnim} 1s;
     cursor: zoom-in;
     transition: all 0.3s;
