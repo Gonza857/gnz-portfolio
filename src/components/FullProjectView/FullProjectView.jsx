@@ -12,7 +12,7 @@ import { ModalProjectImg } from "../ModalProjectImg/ModalProjectImg";
 export const FullProjectView = () => {
   const [imagesUsed, setImagesUsed] = useState([]);
   let params = useParams();
-  let paramsId = params.id;
+  let paramsId = Number(params.id);
   let searchProject = projectsInfo.find((project) => project.id === paramsId);
   const { thisProjectInfo } = searchProject;
 
