@@ -55,8 +55,4 @@ const SecButton = styled(MainButton)`
     box-shadow: 0px 0px 15px 3px rgba(255, 0, 8, 0.75),
       0px 0px 15px 3px rgba(255, 0, 8, 0.75);
   }
-  @media screen and (max-width: 600px) {
-    font-size: 0.7rem;
-    padding: 6px 15px;
-  }
 `;

@@ -43,6 +43,7 @@ const ProjectImgContainer = styled.div`
   display: flex;
   align-items: center;
   height: fit-content;
+  border: 4px solid yellow;
   img {
     width: 100%;
     height: fit-content;
@@ -61,5 +62,6 @@ const ProjectImgContainer = styled.div`
         1px 2px 4px rgb(37, 149, 190), -2px -4px -6px rgb(37, 149, 190),
         2px -4px -6px rgb(37, 149, 190), 2px -4px -6px rgb(37, 149, 190);
     }
+    border: 4px solid blue;
   }
 `;
