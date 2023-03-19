@@ -119,7 +119,7 @@ const ProjectTitle = styled.div`
 `;
 
 const ProjectDescription = styled.p`
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   @media screen and (min-width: 600px) {
     font-size: 0.8rem;
   }
