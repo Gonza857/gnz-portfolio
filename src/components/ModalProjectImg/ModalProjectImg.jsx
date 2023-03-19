@@ -11,7 +11,12 @@ export const ModalProjectImg = ({ imgRoute, cols }) => {
     <>
       <ProjectImgContainer className={cols}>
         <img src={imgRoute} alt="" onClick={handleShow} />
-        <Modal show={show} onHide={handleClose} size="lg">
+        <Modal
+          show={show}
+          onHide={handleClose}
+          size="lg"
+          className="mt-5 pt-5 mt-md-0 pt-md-0"
+        >
           <Modal.Header closeButton />
           <Modal.Body>
             <ModalImg src={imgRoute} alt="" />
@@ -43,7 +48,6 @@ const ProjectImgContainer = styled.div`
   display: flex;
   align-items: center;
   height: fit-content;
-  border: 4px solid yellow;
   img {
     width: 100%;
     height: fit-content;
@@ -62,6 +66,5 @@ const ProjectImgContainer = styled.div`
         1px 2px 4px rgb(37, 149, 190), -2px -4px -6px rgb(37, 149, 190),
         2px -4px -6px rgb(37, 149, 190), 2px -4px -6px rgb(37, 149, 190);
     }
-    border: 4px solid blue;
   }
 `;

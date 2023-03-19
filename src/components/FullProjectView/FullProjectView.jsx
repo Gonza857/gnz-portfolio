@@ -100,7 +100,7 @@ export const FullProjectView = () => {
           </div>
         </ProjectInfo>
 
-        <ProjectImagesContainer className="col-12 col-xl-7 px-2 px-md-0 p-lg-0 gap-2 bor2">
+        <ProjectImagesContainer className="col-12 col-xl-7 px-2 px-md-0 p-lg-0 gap-3 gap-md-2 bor2">
           {thisProjectInfo.images.map((img, i) => {
             return (
               <ModalProjectImg imgRoute={img} cols={columnsImagesProject[i]} />
@@ -146,8 +146,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   text-align: center;
-  @media screen and (max-width: 1199px) {
-    flex-direction: column;
+  flex-direction: column;
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
   }
 `;
 
@@ -155,7 +156,8 @@ const ProjectImagesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: fit-content;
-  @media screen and (min-width: 768px) {
+  justify-content: center;
+  @media screen and (min-width: 1200px) {
     align-items: center;
     justify-content: center;
     height: 100%;
