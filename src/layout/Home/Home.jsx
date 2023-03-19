@@ -16,18 +16,6 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    console.log(isOpenMenu);
-  }, [isOpenMenu]);
-
-  useEffect(() => {
-    if (window.screen.width >= 992) {
-      setIsOpenMenu(true);
-    } else {
-      setIsOpenMenu(false);
-    }
-  }, []);
-
   return (
     <MainSection
       className="col-md-12"

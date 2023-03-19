@@ -22,14 +22,14 @@ function Navbar() {
   const closeSideBar = () => {
     window.scrollTo(0, 0);
     if (window.screen.width < 992) {
-      setIsOpenMenu(true);
+      setIsOpenMenu(false);
     }
   };
 
   useEffect(() => {
     // console.log(isOpenMenu);
     console.log(isOpenMenu ? "abierto" : "cerrrado");
-  }, []);
+  }, [isOpenMenu]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
 import { AiOutlineSend } from "react-icons/ai";
 import { useForm } from "react-hook-form";
@@ -6,11 +6,13 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Ring } from "@uiball/loaders";
+import { userContext } from "../../storage/UserContext";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import MainBtn from "../../components/Button/MainBtn";
 
 function Contact() {
+  const { isOpenMenu } = useContext(userContext);
   const captcha = useRef(null);
   const form = useRef();
 
@@ -101,7 +103,12 @@ function Contact() {
   };
 
   return (
-    <ContactContainer className="col-12 col-lg-10">
+    <ContactContainer
+      className="col-12 col-lg-10"
+      style={{
+        opacity: `${window.screen.width < 992 && isOpenMenu ? "0.5" : "1"}`,
+      }}
+    >
       <ToastContainer />
       <Wrapper className="col-12 col-lg-10">
         <FormContainer className="col-10 col-sm-8 col-md-6 gap-3">

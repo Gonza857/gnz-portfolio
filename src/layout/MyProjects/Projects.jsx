@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { projectsInfo } from "../../projectsData/projectsData";
+import { userContext } from "../../storage/UserContext";
 
 function Projects() {
+  const { isOpenMenu } = useContext(userContext);
   return (
-    <ProjectsSection className="col-md-12 col-lg-9 col-xl-10 d-flex flex-column pb-3 pb-lg-0 pt-lg-5 gap-3 gap-md-0">
+    <ProjectsSection
+      className="col-md-12 col-lg-9 col-xl-10 d-flex flex-column pb-3 pb-lg-0 pt-lg-5 gap-3 gap-md-0"
+      style={{
+        opacity: `${window.screen.width < 992 && isOpenMenu ? "0.5" : "1"}`,
+      }}
+    >
       <SectionTitle>Portfolio</SectionTitle>
       <Wrapper className="col-11">
         <ProjectsWrapper>
