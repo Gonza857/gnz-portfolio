@@ -72,17 +72,17 @@ function Aboutme() {
       description2: "",
       finishDate: "Fecha de finalización: Diciembre, 2022.",
     },
-    // {
-    //   localImg: "./assets/images/unlamLogo.webp",
-    //   roundedImg: true,
-    //   bgWhite: false,
-    //   altImg: "UNLaM Logo",
-    //   cardTitle: "Educación Universitaria",
-    //   instituto: "Universidad Nacional de la Matanza",
-    //   description1: "Técnico Universitario en desarrollo web fullstack.",
-    //   description2: "",
-    //   finishDate: "Abril 2023 - Actualidad.",
-    // },
+    {
+      localImg: "./assets/images/unlamLogo.webp",
+      roundedImg: true,
+      bgWhite: false,
+      altImg: "UNLaM Logo",
+      cardTitle: "Educación Técnica Universitaria",
+      instituto: "Universidad Nacional de la Matanza",
+      description1: "Carrera: Técnicatura en desarrollo web fullstack.",
+      description2: "",
+      finishDate: "Abril 2023 - Actualidad.",
+    },
   ];
 
   return (

@@ -78,7 +78,6 @@ function Contact() {
   const onSubmit = () => {
     setIsSending(true);
     if (captcha.current.getValue()) {
-      console.log("envio con captcha valido");
       emailjs
         .sendForm(
           "service_f6kumxu",
@@ -87,7 +86,7 @@ function Contact() {
           "hngfXkj4dqbpXlBAg"
         )
         .then(
-          (result) => {
+          () => {
             notifySuccess();
             reset();
             setIsSending(false);

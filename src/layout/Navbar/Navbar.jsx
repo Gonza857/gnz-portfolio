@@ -76,7 +76,7 @@ function Navbar() {
 
             {/* --------------- */}
             <DownloadCvContainer>
-              <a href="./assets/pdf/CV_RAMOS-GONZALO.pdf" download>
+              <a href="./assets/pdf/CV-RAMOS-GONZALO.pdf" download>
                 Descargar CV
                 <AiOutlineDownload style={{ fontSize: "20px" }} />
               </a>

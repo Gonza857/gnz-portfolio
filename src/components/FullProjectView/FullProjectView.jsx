@@ -100,7 +100,7 @@ export const FullProjectView = () => {
           </div>
         </ProjectInfo>
 
-        <ProjectImagesContainer className="col-12 col-xl-7 px-2 px-md-0 p-lg-0 gap-3 gap-md-2 bor2">
+        <ProjectImagesContainer className="col-12 col-xl-7 px-2 px-md-0 p-lg-0 gap-3 gap-md-2">
           {thisProjectInfo.images.map((img, i) => {
             return (
               <ModalProjectImg imgRoute={img} cols={columnsImagesProject[i]} />
